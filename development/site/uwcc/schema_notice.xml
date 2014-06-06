@@ -1,0 +1,35 @@
+<category name="notice" description="공지사항">
+	
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="3" method="get">
+			<url>http://www.uwcc.or.kr/board/bbs/board.php?bo_table=notice&amp;page=${i}</url>
+		</page>		
+	</pagelist>
+
+	<process rootPath="//table[@class='board_list']/tbody/tr/td[@class='num' and number(text())]/.." >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="문화원"/>
+		<field id="link" xpath="//td[2]//a/@href" prefix="http://www.uwcc.or.kr/board/board.php/"  suffix="" >
+			 <field id="idx" pk="true" parseUrl="true" number="true" value="${wr_id}"/>
+			 <block id="linkContent" linkPage="true" xpath="//body">
+				<field id="title" xpath="//div[contains(@style,'color:#505050; font-size:13px; font-weight:bold; word-break:break-all;')]/text()" />
+				<field id="content" xpath="//span[@id='writeContents']/../.." tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+				<field id="timeStr" xpath="//span[contains(@style,'color:#888888;') and contains(text(),'작성일')]/text()" >
+					<field id="time" replaceAll="작성일 :  "   datetimeParseFormat="yy-MM-dd hh:mm" datetimeFormat="20yyMMddHHmmss"/>
+				</field >
+				<block xpath="//td/img[@src='../skin/board/basic/img/icon_file.gif']/.." multiNode="true">
+					<field id="atchname" xpath="//a/span[1]/text()" />
+					<field id="filename" dependOn="atchname" value="${sys.now}"/>
+					<field id="atchlink" dependOn="atchname" xpath="//a/@href"  parseJavascript="true" value="http://www.uwcc.or.kr/board/bbs/${0}">
+						<block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" method="POST"/>
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>	
+		
+	</process>
+
+</category>

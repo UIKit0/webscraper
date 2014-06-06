@@ -1,0 +1,4 @@
+<site name="uw21" description="보건소">
+	<charset>euc-kr</charset>
+	<dataHandler>notice</dataHandler>
+</site>

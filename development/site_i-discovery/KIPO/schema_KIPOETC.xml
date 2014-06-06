@@ -1,0 +1,34 @@
+﻿<category name="KIPOETC" description="특허청 기타" version="1.0">
+	<pagelist>		
+		<page encoding="euc-kr" from="1" to="2" method="get">
+			<url>http://www.kipo.go.kr/kpo/user.tdf?a=user.ip_info.others.BoardApp&amp;c=&amp;board_id=others&amp;ssl=&amp;npp=10&amp;catmenu=m02_03_07&amp;sdate=&amp;edate=&amp;searchKey=&amp;searchVal=&amp;movePage=&amp;silguk_cd=&amp;dept_cd=&amp;bunryu=&amp;st=&amp;gubun=&amp;cp=${i}&amp;pg=1</url>
+		</page>			
+	</pagelist>
+
+	<process rootPath="//td[@class='list_title_padding']" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_003"/>
+		<field id="boardCode" value="TOP_BOARD_CD_003_003"/>
+		<field id="typeCode" value="TOP_BOARD_CD_003_003_003"/>
+		<field id="docSrc" value="특허청"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="link_" prefix="http://www.kipo.go.kr" xpath="//a/@href" jsessionRemove="true" >
+             <field id="pk" pk="true" regexp="seq=([0-9]+)" />
+             <block id="linkContent" linkPage="true" >
+                <block id="linkContentBlock" xpath="//body[@id='main']//table/tbody/tr/td[2]">
+                	<field id="datetime" xpath="//td[@class='view_date_line'][2]/text()"  datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyy.MM.dd"/>
+                    <field id="title" xpath="//tr/td[@colspan='3']/text()"/>
+                    <field id="fileuuid" modify="makeUUID"/>
+                    <field id="content"  xpath="//table[2]/tbody/tr[6]/td" tagRemove2="true" tagWhiteList="br" multiLines="true" />
+                    <field id="atchname" xpath="//table[2]/tbody/tr[7]/td/a/@href" parseUrl="true" value = "${fn}" />                    
+                    <field id="atchlink" multiNode = "true"  prefix="http://www.kipo.go.kr" xpath="//table[2]/tbody/tr[7]/td/a/@href"  jsessionRemove="true" >
+                        <field id="filename" value="${sys.now}" />
+                        <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}"/>
+                        <field id="filesize" value="${field.atchfile.fileSize}" validation="isNotEmpty"/>
+                    </field>
+                    
+                </block>
+            </block>
+        </field>
+	</process>
+</category>
+

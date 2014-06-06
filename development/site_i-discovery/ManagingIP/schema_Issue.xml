@@ -1,0 +1,116 @@
+<category name="Issue" description="Managing IP Magazine" version="1.0">
+	<pagelist>
+	  <!--
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/75654/Archive/June-2010.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/76926/Archive/JulyAugust-2010.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/77274/Archive/September-2010.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/77735/Archive/October-2010.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/80071/Archive/November-2010.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/80544/Archive/January-2011.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/81146/Archive/February-2011.html</url>
+		</page>
+		
+		<page encoding="UTF-8">		
+			<url>http://www.managingip.com/Issue/81459/Archive/March-2011.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/81828/Archive/April-2011.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/82144/Archive/May-2011.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/82460/Archive/June-2011.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/82794/Archive/JulyAugust-2011.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/83347/Archive/September-2011.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/83575/Archive/October-2011.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/83902/Archive/November-2011.html</url>
+		</page>
+		 
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/84167/Archive/December-2011January-2012.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/84590/Archive/February-2012.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/84853/Archive/March-2012.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/85102/Archive/April-2012.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/85346/Archive/May-2012.html</url>
+		</page>
+		
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Issue/85657/Archive/June-2012.html</url>
+		</page>
+		!-->
+		<page encoding="UTF-8">
+			<url>http://www.managingip.com/Latest-Issue.html</url>
+		</page>
+		
+	</pagelist>
+
+	<process rootPath="//a[contains(@id,'ctl00_ContentPlaceHolder1')]" >
+        
+    <field id="upperBoardCode" value="TOP_BOARD_CD_006"/>
+    <field id="boardCode" value="TOP_BOARD_CD_006_001"/>
+    <field id="typeCode" value="TOP_BOARD_CD_006_001_002"/>
+		
+		<field id="docSrc" value="Managing IP Magazine"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="link_" pk="true" prefix="http://www.managingip.com" xpath="//@href" >
+             <block id="linkContent" linkPage="true" >
+                <block id="linkContentBlock" xpath="//body">
+                	<field id="head" xpath="//div[@class='breadcrumb']//a[contains(@href,'Issue')]/text()" />
+                	<field id="datetime" xpath="//p[@class='date']/text()" datetimeParseFormat="dd MMM yyyy" dateLocale= "Locale.US" setCurrentTimeWhenNULL="true" setDataWithPrevValueWhenNull="true"  datetimeFormat="yyyy.MM.dd"/>
+                    <field id="titles" xpath="//span[@id='ctl00_ContentPlaceHolder1_lblTitle']/text()"/>
+                    <field id="title" value = "[${field.head}]${field.titles}" />
+                    <field id="content"  xpath="//div[@class='article_content']"  multiLines="true" modify="IPManagingIssueModifier" />     
+                </block>
+            </block>
+        </field>
+	</process>
+	
+</category>
+

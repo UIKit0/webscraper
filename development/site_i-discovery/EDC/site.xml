@@ -1,0 +1,17 @@
+<site name="EDC" description="전자정보센터">
+	<charset>utf-8</charset>
+	<dataHandler>idiscovery</dataHandler>
+	<login method="post">
+		<url>http://203.253.128.6:8088/servlet/eic.wism.EICWeb</url>	
+		<url-params key="id">id32</url-params>
+		<url-params key="passwd">id60048000</url-params>
+		<url-params key="UserValid">2</url-params>
+		<url-params key="UserId">id32</url-params>
+		<url-params key="UserLevel">0</url-params>
+		<url-params key="Login">Y</url-params>
+		<url-params key="Command">10</url-params>
+	</login>
+	<cookie key="id">id32</cookie>
+	<cookie key="LoginCheck">Y</cookie>
+	<cookie key="save">false</cookie>
+</site>

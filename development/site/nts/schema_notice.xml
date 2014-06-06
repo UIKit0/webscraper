@@ -1,0 +1,34 @@
+<category name="notice" description="공지사항" version="1.0">
+
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="8" method="get">
+			<url>http://j.nts.go.kr/menu/notice/notice_list.asp?tax_code=138&amp;page=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//table[@class='table_list']/tbody//tr" >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="${site.description}"/>
+		<field id="time" xpath="(//td)[4]/text()" datetimeParseFormat="yyyy-M-d" datetimeFormat="yyyyMMddHHmmss"/>
+		<field id="author" xpath="(//td)[3]/text()" />
+		
+		<field id="link" xpath="(//td)[2]/a/@href" parseUrl="true" value="http://j.nts.go.kr/menu/notice/notice_view.asp?tax_code=${tax_code}&amp;page=${page}&amp;board_seq=${board_seq}">
+			 <field id="idx" pk="true" parseUrl="true" number="true" value="${board_seq}"/>
+			 <block id="linkContent" linkPage="true" linkMethod="get">
+				<block id="linkContentBlock" xpath="//body">
+					<field id="title" xpath="//td[@class='view_subject']" tagRemove2="true" />
+					<field id="content" xpath="//td[@class='view_content']" tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+					<field id="atchname" xpath="//div[@class='view_down bg_box']/ul/li/a//text()[1]" />
+					<field id="filename" dependOn="atchname" value="${sys.now}"/>
+					<field id="atchlink" dependOn="atchname" xpath="//div[@class='view_down bg_box']/ul/li/a/@onclick" parseJavascript="true" value="http://j.nts.go.kr/menu/inc/download.asp?file_url=${0}&amp;file_nm=${1}&amp;tax_code=${2}" >
+						<block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>	
+	</process>
+
+</category>

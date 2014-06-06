@@ -1,0 +1,34 @@
+<category name="notice" description="공지사항" version="1.0">
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="500" method="get" urlEncode="true">
+			<url>http://cafe.naver.com/joonggonara.cafe?iframe_url=/ArticleList.nhn?search.boardtype=L&amp;search.menuid=335&amp;search.questionTab=A&amp;search.clubid=10050146&amp;search.totalCount=151&amp;search.page=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//div[@class='board-box']/table/tbody//tr[@align='center']" >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="${site.description}"/>
+		<block xpath="(//td)[1]/span/text()" headerValidation="isNumber"/>
+		<field id="title" xpath="//a[@class='m-tcol-c']/text()" />
+		<field id="time" xpath="//td[@class='view-count m-tcol-c']/text()"  datetimeParseFormat="yyyy/MM/dd" datetimeFormat="yyyyMMddHHmmss"/>
+		<field id="idx"  pk="true" number="true" xpath="//a[@class='m-tcol-c']/@href" parseUrl="true" value="${4}"/>
+		<!--  
+		<field id="link" xpath="(//td)[2]/a/@href" parseJavascript="true" value="http://uiwang.familynet.or.kr/area_center/know/notice_view.php?seq=${0}">
+			<block id="linkContent" linkPage="true" linkMethod="post" xpath="//div[@class='view_detail']">
+				<field id="content" xpath="//div[@class='view_cont']" tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+				<block id="atchBlock" multiNode="true" xpath="//div[@class='append_file']/span[@class='text']/a[not(@onclick)]" >
+					<field id="atchname" xpath="/a/text()[2]" />
+					<field id="filename" dependOn="atchname" value="${sys.now}"/>
+					<field id="atchlink" dependOn="atchname" xpath="/a/@href" parseJavascript="true" value="http://uiwang.familynet.or.kr/inc/download_file.php?filename=${0}">
+						<block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>
+		-->
+	</process>
+	
+</category>

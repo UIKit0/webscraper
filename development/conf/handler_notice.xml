@@ -1,0 +1,122 @@
+<dataHandler name="notice">
+	<debug>true</debug>
+	<rollbackOnError>false</rollbackOnError>
+	<insertSql>
+		<sql>
+		INSERT INTO WCM_BOARD_B0428
+		(_CATBOT_SITE_ID, _CATBOT_CATEGORY_ID, _CATBOT_ENTRY_ID,ETC_4,ETC_5,ETC_6, GROUP_ID, COMMUNITY_ID,RE_LEVEL,RE_DEPTH,TITLE,KOR_NAME,REAL_NAME,OPEN_YN
+		,RE_PROC_YN,CONTENTS,FILE_COUNT,READ_CNT,RECMD_CNT,MEMO_CNT,HTML_YN,SECRET_YN
+		,IP_ADDR,NOTIFY_YN,DBSTS,IS_INDEX,CREATE_DATE_MOD,START_DATE,END_DATE
+		,CREATE_DATE,CREATE_USER_ID,UPDATE_DATE,UPDATE_USER_ID)
+		VALUES
+		(?,?,?,?,?,?,BOARD_ID,'B0428',0,0,?,?,?,'Y','Y',?,0,0,0,0,'Y','N','','N','A','N',?,?,TO_CHAR(ADD_MONTHS(TO_DATE(?,'YYYYMMDDHH24MISS'), 1), 'YYYYMMDDHH24MISS') ,?,?,?,?)
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+		<field>atchname</field>
+		<field>atchlink</field>
+		<field>link</field>
+		<field>title</field>
+		<field>orgname</field>
+		<field>orgname</field>
+		<field>content</field>
+		<field>time</field>
+		<field>time</field>
+		<field>time</field>
+		<field>time</field>
+		<field>author</field>
+		<field>time</field>
+		<field>author</field>
+	</insertSql>
+	
+	<updateSql>
+		<sql>
+		UPDATE WCM_BOARD_B0428
+		SET TITLE=?,CONTENTS=?,ETC_4=?,ETC_5=?,ETC_6=?,
+		UPDATE_USER_ID=?,UPDATE_DATE=?
+		WHERE _CATBOT_SITE_ID=? AND _CATBOT_CATEGORY_ID=? AND _CATBOT_ENTRY_ID=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+	</updateSql>
+	
+	<deleteSql>
+		<sql>
+		DELETE FROM WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=? AND etc_3=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+	</deleteSql>
+	
+	<truncateSql>
+		<sql>
+		DELETE FROM WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+	</truncateSql>
+	
+	<totalCountSql>
+		<sql>
+		SELECT COUNT(*) FROM WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+	</totalCountSql>
+	<!--  
+	<selectSql>
+		<sql>
+		SELECT ROWNUM, ETC_3,TITLE,CONTENTS,UPDATE_DATE,UPDATE_USER_ID,ETC_4,ETC_5 FROM WCM_BOARD_B0428
+		WHERE _CATBOT_SITE_ID=? AND _CATBOT_CATEGORY_ID=? AND ROWNUM &gt ? AND ROWNUM &lt= ? order by ROWNUM DESC
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>start</field>
+		<field>end</field>
+	</selectSql>
+	-->
+	<selectSql>
+		<sql>
+		SELECT  
+			etc_1,etc_2,etc_3,TITLE,CONTENTS as content,UPDATE_DATE,UPDATE_USER_ID,ETC_4 as atchname,ETC_5 as atchlink, ETC_6 as link
+		FROM ( 
+			SELECT @ROWNUM:=@ROWNUM+1 AS rownum, WCM_BOARD_B0428.* FROM WCM_BOARD_B0428, (select @ROWNUM:=0)r
+			WHERE etc_1=? AND etc_2=? order by etc_3 desc
+			) AS tmp 
+		WHERE rownum &gt;= ? and rownum &lt; ? 
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+	</selectSql>
+	
+	<showFields>
+		<field id="true">etc_3</field>
+		<field>TITLE</field>
+		<field>CONTENT</field>
+		<field>atchname</field>
+		<field>atchlink</field>
+		<field>link</field>
+		<field>UPDATE_USER_ID</field>
+		<field>UPDATE_DATE</field>
+	</showFields>
+	
+	<selectByIdSql>
+		<sql>
+		SELECT  
+			etc_1,etc_2,etc_3,TITLE,CONTENTS as content,UPDATE_DATE,UPDATE_USER_ID,ETC_4 as atchname,ETC_5 as atchlink, ETC_6 as link
+		FROM 
+		WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=? AND etc_3=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+	</selectByIdSql>
+	
+</dataHandler>

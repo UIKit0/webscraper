@@ -1,0 +1,74 @@
+﻿<category name="ettrends" description="전자통신동향분석" version="1.0">
+	<pagelist>
+	    <!--				
+		<page encoding="euc-kr" from="121" to="126" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2010&amp;pubNo=${i}</url>
+		</page>
+		
+		<page encoding="euc-kr" from="127" to="132" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2011&amp;pubNo=${i}</url>
+		</page>
+		!-->
+		<page encoding="euc-kr" from="133" to="139" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2012&amp;pubNo=${i}</url>
+		</page>		
+		
+		<page encoding="euc-kr" from="140" to="146" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2013&amp;pubNo=${i}</url>
+		</page>	
+		
+		<page encoding="euc-kr" from="147" to="153" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2014&amp;pubNo=${i}</url>
+		</page>	
+		
+		<page encoding="euc-kr" from="154" to="160" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2015&amp;pubNo=${i}</url>
+		</page>	
+		
+		<page encoding="euc-kr" from="161" to="167" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2016&amp;pubNo=${i}</url>
+		</page>	
+		
+		<page encoding="euc-kr" from="168" to="174" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2017&amp;pubNo=${i}</url>
+		</page>	
+		
+		<page encoding="euc-kr" from="175" to="181" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2018&amp;pubNo=${i}</url>
+		</page>	
+		
+		<page encoding="euc-kr" from="182" to="188" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2019&amp;pubNo=${i}</url>
+		</page>	
+		
+		<page encoding="euc-kr" from="189" to="195" method="get">
+			<url>http://ettrends.etri.re.kr/servlet/ETTRENDSMain?year=2020&amp;pubNo=${i}</url>
+		</page>	
+		
+	</pagelist>
+
+	<process rootPath="//tr[@height=45]" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_002"/>
+		<field id="boardCode" value="TOP_BOARD_CD_002_004"/>
+		<field id="typeCode" value=""/>
+		<field id="docSrc" value="ETRI"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="link_" pk="true" xpath="//a/@href">
+             <block id="linkContent" linkPage="true">
+                <block id="linkContentBlock" xpath="//body">
+                	<field id="datetime" xpath="(//td[@class='booktitle'])[2]/text()" regexp="발행일자 : (.+)" datetimeParseFormat="yyyy.MM.dd" datetimeFormat="yyyy.MM.dd"/>
+                    <field id="title" xpath="//span[@class='name1']/text()"/>
+                    <field id="content" value="" />
+                    <field id="fileuuid" modify="makeUUID"/>
+                    <field id="atchname" xpath="//span[@class='name1']/a/@href" regexp="([^/\s]+)$"/>
+                    <field id="filename" dependOn="atchname" value="${sys.now}"/>
+                    <field id="atchlink" xpath="//span[@class='name1']/a/@href">
+                        <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+                        <field id="filesize" value="${field.atchfile.fileSize}"/>
+                    </field>
+                </block>
+            </block>
+        </field>        
+	</process>
+</category>
+

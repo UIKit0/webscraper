@@ -1,0 +1,8 @@
+<site name="familynet" description="건강가정지원센터">
+	<charset>utf-8</charset>
+	<dataHandler>notice</dataHandler>	
+	<timeOut>120000</timeOut>
+	<login>
+		<url>http://www.familynet.or.kr/fn_areacenter/main/index.do?center_code=116</url>
+	</login>
+</site>

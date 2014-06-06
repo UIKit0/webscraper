@@ -1,0 +1,36 @@
+<category name="NTIS" description="국가기술지식정보서비스/정책동향" version="1.0">
+	<pagelist>		
+		<page encoding="euc-kr" from="1" to="8" method="get">
+			<url>http://www.ntis.go.kr/ThNewBoardList.do?boardDivCd=05&amp;boardDivSeqNo=1&amp;pageNumber=${i}&amp;searchType=title&amp;searchWord=</url>
+		</page>		
+	</pagelist>
+
+	<process rootPath="//form[@id='newBoardForm']/table/tbody/tr/td/a" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_003"/>
+		<field id="boardCode" value="TOP_BOARD_CD_003_003"/>
+		<field id="typeCode" value="TOP_BOARD_CD_003_003_001"/>
+		<field id="docSrc" value="국가과학기술지식정보서비스"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="link_" prefix="http://ntis.go.kr" xpath="//a/@href" pk="true" jsessionRemove="true" >
+             <block id="linkContent" linkPage="true" >
+                <block id="linkContentBlock" xpath="//div[@id='bodyBoardContent']">
+                	<field id="datetime" xpath="//span[@class='author']/text()"  regexp="작성일 : (.+)" datetimeParseFormat="yyyy.MM.dd" datetimeFormat="yyyy.MM.dd"/>
+                    <field id="title" xpath="//h2[@class='read_title']/text()"/>
+                    <field id="fileuuid" modify="makeUUID"/>
+                    <field id="content"  tagRemove2="true" tagWhiteList="img,br" resourcePathRewrite="true" multiLines="true" />
+
+                    <field id="attach" multiNode = "true" xpath="//img[contains(@title,'첨부파일')]/../a" >
+		                <field id="atchname" xpath="//@href" parseUrl="true" value = "${fileName}"/>
+		                <field id="filename" value="${sys.now}" />
+		                <field id="atchlink" prefix="http://www.ntis.go.kr" xpath="//@href" jsessionRemove="true" >
+			                <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" value = "${field.atchlink}"/>
+			                <field id="filesize" value="${field.atchfile.fileSize}" validation="isNotEmpty"/>	                    
+                 		</field>
+                 	</field>
+                    
+                </block>
+            </block>
+        </field>
+	</process>
+</category>
+

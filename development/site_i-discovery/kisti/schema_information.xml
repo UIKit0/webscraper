@@ -1,0 +1,37 @@
+﻿<category name="information" description="정보" version="1.0">
+	
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="80" method="get">
+			<url>http://mirian.kisti.re.kr/global/global_type_l.jsp?class_cd=J&amp;curr_page=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//a[@class='board01_black']" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_001"/>
+		<field id="boardCode" value="TOP_BOARD_CD_001_001"/>
+		<field id="typeCode" value="TOP_BOARD_CD_001_001_002"/>
+		<field id="docSrc" value="KISTI MIRIAN"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="id" pk="true" xpath="//a[@class='board01_black']/@href" parseJavascript="true" value="${0}">
+            <field id="link_" value="http://mirian.kisti.re.kr/global/global_v.jsp?record_no=${field.id}">
+                 <block id="linkContent" linkPage="true">
+                    <block id="linkContentBlock" xpath="//div[@id='pTable']">
+                    	<field id="datetime" xpath="(//div[@class='author']/font)[3]/text()" datetimeParseFormat="yyyy-MM-dd" setCurrentTimeWhenNULL="true" setDataWithPrevValueWhenNull="true" datetimeFormat="yyyy.MM.dd"/> 	
+                        <field id="title" xpath="//td[@class='text02_title_bold']/text()" tagRemove2="true" type="varchar(100)"/>
+                        <field id="content" prefix="&lt;table id='_kisti'&gt;&lt;tr&gt;" suffix="&lt;/tr&gt;&lt;/table&gt;" xpath="//td[span[@class='text02_subject_content']]" resourcePathRewrite="true" />                    
+                        <block multiNode="true" xpath = "//div[@id='pTable']/table/tbody/tr/td/span[@class='text02_subject_content']/div[@class='contents']/div/div">
+	                        <field id="fileuuid" modify="makeUUID"/>
+	                        <field id="atchname" xpath="//a[@href]/text()"/>
+	                        <field id="filename" dependOn="atchname" value="${sys.now}"/>
+	                        <field id="atchlink" xpath="//a/@href">
+	                            <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+	                            <field id="filesize" value="${field.atchfile.fileSize}"/>
+	                        </field>
+                        </block>
+                    </block>
+                </block>
+            </field>
+        </field>
+	</process>
+</category>
+

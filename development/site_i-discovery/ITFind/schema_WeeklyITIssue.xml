@@ -1,0 +1,32 @@
+﻿<category name="WeeklyITIssue" description="주간IT산업주요이슈" version="1.0">
+	<pagelist>		
+		<page encoding="utf-8" from="1" to="11" method="get">
+			<url>http://www.itfind.or.kr/itfind/periodical/periodicalTopList.htm?sortOrder=desc&amp;sort=created&amp;pageSize=10&amp;searClassCode=B_ITA_16&amp;codeName=%EC%A3%BC%EA%B0%84+IT%EC%82%B0%EC%97%85+%EC%A3%BC%EC%9A%94+%EC%9D%B4%EC%8A%88&amp;page=${i}</url>			     
+		</page>
+	</pagelist>
+
+	<process rootPath="//td[@class='subject']/nobr/a" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_002"/>
+		<field id="boardCode" value="TOP_BOARD_CD_002_001"/>
+		<field id="typeCode" value=""/>
+		<field id="docSrc" value="NIPA ITFind"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="link_" pk="true" xpath="//@href" replaceAll="total=[0-9]+" replaceTo="total=0" removeAll="page=[0-9]+" >
+            <block id="linkContent" linkPage="true">
+        	<block id="subContentBlock" xpath = "//table[@id='view']">
+            	<field id="datetime" xpath="//thead/tr/th[(text()='발  행  일')]/following-sibling::td[1]/text()" datetimeParseFormat="yyyy.MM.dd" datetimeFormat="yyyy.MM.dd"/>                	                            
+                <field id="title" xpath="//thead/tr/th[(text()='제       목')]/following-sibling::td/text()"/>
+                <field id="content" xpath="//tbody/tr/td"  tagRemove="true" tagWhiteList="br" multiLines="true" />
+                <field id="fileuuid" modify="makeUUID"/>
+                <field id="atchname" xpath="//thead/tr/td/a/text()" />
+                <field id="filename" xpath="//thead/tr/td/a/text()" dependOn="atchname" value="${sys.now}" />
+                <field id="atchlink" xpath="//thead/tr/td/a/@href">
+                    <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+                    <field id="filesize" value="${field.atchfile.fileSize}"/>
+                </field>
+            </block>                
+            </block>
+        </field>        
+	</process>
+</category>
+

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Copyright (C) 2011 WebSquared Inc. http://websqrd.com
+ * 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<project name="webscraper" default="dist" basedir=".">
+	<description>
+	</description>
+
+	<property name="project.name" value="${ant.project.name}"/>
+	<property name="deploy.dir" location="release/${project.name}" />
+	<property name="bin.dir" location="${deploy.dir}/bin/" />
+	<property name="lib.dir" location="${deploy.dir}/lib/" />
+	<property name="websqrdlibs.project.name" value="websqrdlibs"/>
+	<property name="conf.dir" location="${deploy.dir}/conf/" />
+	<property name="log.dir" location="${deploy.dir}/logs/" />
+	<property name="site.dir" location="${deploy.dir}/site_i-discovery/" />
+	
+	<property name="dev.site.list" location="development/site_i-discovery/" />
+	<property name="dev.lib.dir" location="lib/" />
+	<property name="dev.conf.dir" location="development/conf/" />
+	
+	<property name="isDebug" value="true"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="project.classpath">
+    	<fileset dir="${dev.lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<pathelement location="../${websqrdlibs.project.name}/bin/"/>
+    </path>
+	
+	
+	<target name="clean">
+		<delete dir="${deploy.dir}" defaultexcludes="false" includeemptydirs="true" />
+		<mkdir dir="${deploy.dir}" />
+	</target>
+
+	<target name="dist" depends="clean">
+		<mkdir dir="${deploy.dir}" />
+		<mkdir dir="${lib.dir}" />
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${conf.dir}" />
+		<mkdir dir="${site.dir}" />
+		<mkdir dir="${log.dir}" />
+		<mkdir dir="${site.dir}" />
+		
+		<javac debug="${isDebug}" debuglevel="${debuglevel}" destdir="${bin.dir}" source="${source}" 
+			target="${target}" encoding="utf-8">
+            <src path="src/java"/>
+            <classpath refid="project.classpath"/>
+        </javac>
+		
+		<jar destfile="${lib.dir}/webscraper.jar" basedir="${bin.dir}" excludes="" />
+		
+		<delete dir="${bin.dir}" />
+		
+        <subant failonerror="false">
+            <propertyset><propertyref prefix="toplevel"/></propertyset>
+            <fileset dir="../${websqrdlibs.project.name}/" includes="build.xml"/>
+        </subant>
+		
+		<copy includeemptydirs="false" todir="${lib.dir}">
+            <fileset dir="${dev.lib.dir}" excludes=""/>
+			<fileset dir="../${websqrdlibs.project.name}/release/${websqrdlibs.project.name}/lib/" includes="**/*.jar" excludes="**/bsh*.jar"/>
+        </copy>
+		
+		<copy todir="${conf.dir}">
+			<fileset dir="${dev.conf.dir}" /> 
+		</copy>
+		
+		<copydir src="service" dest="${deploy.dir}/service" />
+		<copydir src="exec" dest="${deploy.dir}/exec" />
+		
+		<!--사이트-->
+		<copy todir="${site.dir}">
+			<fileset dir="${dev.site.list}">
+				<exclude name="**/*_inc.info"/>
+				<exclude name="**/data_*.txt"/>
+			</fileset>
+		</copy>
+			
+		<copy file="start.cmd" todir="${deploy.dir}" />
+		<copy file="start.sh" todir="${deploy.dir}" />
+			
+		<war destfile="${deploy.dir}/manager.war" basedir="WebContent" excludes="" needxmlfile="false"/>
+		
+	</target>
+
+	<target name="makeZip" depends="dist">
+		<zip destfile="${project.name}.zip" basedir="./release" update="true" />
+	</target>
+	
+</project>

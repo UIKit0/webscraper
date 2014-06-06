@@ -1,0 +1,4 @@
+<site name="nts" description="동안양세무서">
+	<charset>euc-kr</charset>
+	<dataHandler>notice</dataHandler>
+</site>

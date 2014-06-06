@@ -1,0 +1,111 @@
+<dataHandler name="notice">
+	<debug>true</debug>
+	<rollbackOnError>false</rollbackOnError>
+	<insertSql>
+		<sql>
+		INSERT INTO T_PMS_INFO_DB
+		(UUID,BOARD_CODE,TYPE_CODE,TITLE,REG_EMP_UUID,REG_EMP_ID,REG_EMP_NAME,REG_DEPT_UUID,REG_DEPT_NAME,REG_DATE,CONTENT,HIT_CNT,PARENT_UUID,MOD_EMP_UUID,MOD_EMP_ID,MOD_EMP_NAME,MOD_DEPT_UUID,MOD_DEPT_NAME,MOD_DATE,DOC_SRC,UPPER_BOARD_CODE,DOC_SRC_CODE,DOC_SRC_DATE)
+		VALUES
+		(?,?,?,?,'7745C7261AC25DDDAC98A25DF51C0B5B','semi.yun','자동수집','32ACFD528272D8FF6A8EEAA6565B0758','홍보팀', '2012-07-20'
+		, ?, 0, null, null, null, null, null, null, null, ?, ?, ?, ?)
+		</sql>
+		<field>uuid</field>
+		<field>boardCode</field>
+		<field>typeCode</field>
+		<field>title</field>	
+		<field>content</field>
+		<field>link_</field>
+		<field>upperBoardCode</field>
+		<field>docSrc</field>
+		<field>datetime</field>
+		
+		<sql multiple="true">
+		INSERT INTO T_SYSTEM_ATTACH_FILE
+		(UUID, MASTER_DOC_ID, SYSTEM_TYPE_CODE, TYPE_CODE, STATUS_CODE, FILE_SAVENAME, FILE_NAME, FILE_SIZE
+		, INSERT_USER_UUID, INSERT_USER_ID, INSERT_USER_IP, INSERT_TIMESTAMP, UPDATE_USER_UUID, UPDATE_USER_ID, UPDATE_USER_IP, UPDATE_TIMESTAMP)
+		VALUES
+		(?, ?, 'PMS', 'PMS/INFO_DB', 'N', ?, ?, ?
+		,'7745C7261AC25DDDAC98A25DF51C0B5B','semi.yun', '1.235.102.105', ?, null, null, null, null)
+		</sql>
+		<field>fileuuid#</field>
+		<field>uuid#</field>
+		<field>filename#</field>
+		<field notNull="true">atchname#</field>
+		<field notNull="true">filesize#</field>
+		<field>datetime</field>
+	</insertSql>
+	
+	<updateSql>
+		<sql>
+		UPDATE WCM_BOARD_B0428
+		SET TITLE=?,CONTENTS=?,ETC_4=?,ETC_5=?,ETC_6=?,
+		UPDATE_USER_ID=?,UPDATE_DATE=?
+		WHERE _CATBOT_SITE_ID=? AND _CATBOT_CATEGORY_ID=? AND _CATBOT_ENTRY_ID=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+	</updateSql>
+	
+	<deleteSql>
+		<sql>
+		DELETE FROM WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=? AND etc_3=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+	</deleteSql>
+	
+	<truncateSql>
+		<sql>
+		DELETE FROM WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+	</truncateSql>
+	
+	<totalCountSql>
+		<sql>
+		SELECT  		
+			count(*)
+		FROM T_PMS_INFO_DB 
+		WHERE BOARD_CODE = ? and UPPER_BOARD_CODE = ? 
+		</sql>
+		<field>boardCode</field>
+		<field>upperBoardCode</field>
+	</totalCountSql>
+	
+	<selectSql>
+		<sql>
+		SELECT  		
+			TITLE, CONTENT, REG_DATE, UUID 
+		FROM T_PMS_INFO_DB 
+		WHERE BOARD_CODE = ? and UPPER_BOARD_CODE = ? 
+		</sql>
+		<field>boardCode</field>
+		<field>upperBoardCode</field>
+	</selectSql>
+	
+	<showFields>
+		<field id="true">UUID</field>
+		<field>TITLE</field>
+		<field>CONTENT</field>
+		<field>REG_DATE</field>
+	</showFields>
+	
+	<selectByIdSql>
+		<sql>
+		SELECT  
+			etc_1,etc_2,etc_3,TITLE,CONTENTS as content,UPDATE_DATE,UPDATE_USER_ID,ETC_4 as atchname,ETC_5 as atchlink, ETC_6 as link
+		FROM 
+		WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=? AND etc_3=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+	</selectByIdSql>
+	
+</dataHandler>

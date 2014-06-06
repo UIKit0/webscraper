@@ -1,0 +1,33 @@
+<category name="notice" description="공지사항" version="1.0">
+	
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="1" method="get">
+			<url>http://www.ggpolice.go.kr/new_seo_sub/sub.asp?mode=list&amp;pageno=${i}&amp;board_id=uw_notice&amp;folder_idx=162&amp;folder_page_idx=564</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//table[@class='tb_layout_bbs1']/tbody//tr" >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="경찰서"/>
+		<field id="author" xpath="(//td)[3]/text()" />
+		<field id="link" xpath="(//td)[2]/a/@href" prefix="http://www.ggpolice.go.kr">
+			 <field id="idx" pk="true" parseUrl="true" number="true" value="${idx}"/>
+			 <block id="linkContent" linkPage="true" linkMethod="post" >
+				<block id="linkContentBlock" xpath="//div[@id='bbs_wrap']">
+					<field id="title" xpath="(//table[@class='tb_layout_bbs2_in']/tbody/tr//td)[1]/text()" />
+					<field id="content" xpath="//div[@class='bbs_content']" tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+					<field id="time" xpath="//td[@class='bbs_date_in']/text()" datetimeParseFormat="yyyy-MM-dd (HH:mm:ss)" datetimeFormat="yyyyMMddHHmmss"/>
+					<field id="atchname" xpath="//div[@class='vc_file']/a//text()[2]" />
+					<field id="filename" dependOn="atchname" value="${sys.now}"/>
+					<field id="atchlink" dependOn="atchname" xpath="//div[@class='vc_file']/a/@href" prefix="http://www.ggpolice.go.kr" >
+						<block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>	
+	</process>
+
+</category>

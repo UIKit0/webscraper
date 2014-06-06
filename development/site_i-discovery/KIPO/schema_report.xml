@@ -1,0 +1,36 @@
+﻿<category name="KIPOREPORT" description="특허청 정책용역,연구보고서" version="1.0">
+	<pagelist>		
+		<page encoding="euc-kr" from="1" to="3" method="get">
+			<url>http://www.kipo.go.kr/kpo/user.tdf?a=user.ip_info.journal.BoardApp&amp;c=&amp;board_id=journal&amp;ssl=&amp;npp=10&amp;catmenu=m02_03_02&amp;sdate=&amp;edate=&amp;searchKey=&amp;searchVal=&amp;movePage=&amp;silguk_cd=&amp;dept_cd=&amp;bunryu=&amp;st=&amp;gubun=&amp;cp=${i}&amp;pg=1</url>		
+		</page>		
+	</pagelist>
+
+	<process rootPath="//td[@class='list_title_padding']" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_003"/>
+		<field id="boardCode" value="TOP_BOARD_CD_003_003"/>
+		<field id="typeCode" value="TOP_BOARD_CD_003_003_002"/>
+		<field id="docSrc" value="특허청"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="link_" prefix="http://www.kipo.go.kr" xpath="//a/@href" pk="true" jsessionRemove="true" >
+             <block id="linkContent" linkPage="true" >
+                <block id="linkContentBlock" xpath="//body[@id='main']">
+                	<field id="datetime" xpath="//td[@class='view_date_line'][2]/text()"  datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyy.MM.dd"/>
+                    <field id="title" xpath="//tr/td[@colspan='3']/text()"/>
+                    <field id="fileuuid" modify="makeUUID"/>
+                    <field id="content"  xpath="//table[2]/tbody/tr[6]/td" tagRemove2="true" tagWhiteList="br" multiLines="true" />
+                    
+                    <field id="attach" multiNode = "true" xpath="//td[@class='view_date_line']/a" >
+		                <field id="atchname" xpath="//@href" parseUrl="true" value = "${fn}"/>
+		                <field id="filename" value="${sys.now}" />
+		                <field id="atchlink" prefix="http://www.kipo.go.kr" xpath="//@href" >
+			                <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" value = "${field.atchlink}"/>
+			                <field id="filesize" value="${field.atchfile.fileSize}" validation="isNotEmpty"/>	                    
+                 		</field>
+                 	</field>
+                 	
+                </block>
+            </block>
+        </field>
+	</process>
+</category>
+

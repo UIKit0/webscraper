@@ -1,0 +1,34 @@
+<configuration scan="true" scanPeriod="10 seconds">
+
+	<property file="conf/webscraper.conf" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%date %level] \(%file:%line\) %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="systemlog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${server.logs.dir}/system.log</file>
+
+		<encoder>
+			<pattern>[%date %level] \(%file:%line\) %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${server.logs.dir}/system.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<MaxHistory>7</MaxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<logger name="org.mortbay" level="INFO" additivity="false">
+		<appender-ref ref="systemlog" />
+	</logger>
+	<logger name="org.apache.jasper" level="INFO" additivity="false">
+		<appender-ref ref="systemlog" />
+	</logger>
+	
+	<root level="DEBUG">
+		<appender-ref ref="systemlog" />
+	</root>
+
+</configuration>

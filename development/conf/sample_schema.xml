@@ -1,0 +1,59 @@
+<webscraper site="sample">
+	<config>
+		<agent>Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 1.1.4322; .NET CLR 2.0.50727) </agent>
+		<sourceEncoding>utf-8</sourceEncoding>
+		<targetEncoding>utf-8</targetEncoding>
+
+		<writeHandler setting="testWrite.conf">com.websqrd.webscraper.scrap.handler.FileWriteHandler</writeHandler>
+		
+		<login>
+			<url>http://www.slrclub.com/login.php</url>
+			<id name="username">guest</id>
+			<passwd name="pass">guest000</passwd>
+		</login>
+		<onerror>resume</onerror>
+		<defaultPageType>html</defaultPageType>
+	</config>
+
+	<pagelist>
+		<page encoding="euc-kr" method="post" from="1" to="10" step="1" continueWhenValidFail="false">
+			<url>http://www.slrclub.com/bbs/zboard.php</url>
+			<url-param key="id">free</url-param>
+			<url-param key="page">${i}</url-param>
+		</page>
+		<page encoding="euc-kr" from="1" to="10" method="get" continueWhenValidFail="true">
+			<url>http://www.slrclub.com/bbs/zboard.php?id=free&amp;page=${i}</url>
+		</page>
+		<page encoding="euc-kr" ><url>http://www.slrclub.com/bbs/zboard.php?id=free</url></page>
+	</pagelist>
+
+	<process>
+		<field id="title1" xpath="//td[@class='list_sbj']/a/text()" modify="titleModifier" />
+		<field id="title2" xpath="/span/h2/text()" modify="titleModifier" />
+		<block id="b01" xpath="/body/div[@class='contents']">
+			<block id="doc" xpath="/list/li">
+				<field id="no" xpath="/span/@no"/>
+				<field id="title" xpath="/span/h1/text()" modify="titleModifier" />
+				<field id="username" xpath="/span/@username"/>
+				<field id="url" xpath="/span/a/@href" modify="linkModifier" prefix="http://www.mydomain.com/" linkPage="true" suffix="" >
+					<block id="linkContents" modify="contentsModifier" type="json">
+						<field id="hit" json="hits[0].text" />
+						<field id="score" json="scores[0].text" />
+					</block>
+				</field>
+				<field id="regdate" xpath="/span[@class='time']/text()" datetimeFormat="yy.MM.dd HH:mm:ss" />
+				<field id="username" xpath="/span/@username" prefix="userId:" />
+				<field id="category" value="board1" /> 
+			</block>
+		</block>
+		<validation-inc>
+			<isNew fieldId="regdate" />
+		</validation-inc>
+	</process>
+	
+	<modifier id="titleModifier" class="com.websqrd.webscraper.addon.example.UrlModifier" />
+	<modifier id="linkModifier" class="com.websqrd.webscraper.addon.example.LinkModifier2" />
+	<modifier id="contentsModifier" class="com.websqrd.webscraper.addon.example.ContentsModifier" />
+	<modifier id="commonModifier" class="com.websqrd.webscraper.addon.example.CommonModifier" />
+	
+</webscraper>

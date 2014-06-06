@@ -1,0 +1,42 @@
+﻿<category name="WeeklyTechTrend" description="주간기술동향" version="1.0">
+	<pagelist>		
+		<page encoding="utf-8" from="1" to="11" method="get">
+			<url>http://www.itfind.or.kr/itfind/periodical/periodicalTopList.htm?sortOrder=desc&amp;sort=created&amp;pageSize=10&amp;searClassCode=B_ITA_01&amp;codeName=주간기술동향&amp;page=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//td[@class='subject']" >
+		<field id='book_' xpath = "//td[@class='subject']/nobr/a/text()" /> 
+        <block id="rootlink" multiNode="true" xpath="//td[@class='subject']/nobr/a/@href" replaceAll="total=[0-9]+" replaceTo="total=0" removeAll="page=[0-9]+">        	       	
+             <block id="linkContent" linkPage="true" >
+                <block id="linkContentBlock" xpath="//div[@id='contents']">
+                	<field id="link_" multiNode="true" xpath="//a[@title='상세보기']/@href" replaceAll="total=[0-9]+" replaceTo="total=0" removeAll="page=[0-9]+">
+                	<block id="sublinkContent" linkPage="true">
+                	<block id="subContentBlock" xpath = "//table[@id='view']">
+						<document id="document">
+						<field id="upperBoardCode" value="TOP_BOARD_CD_001"/>
+						<field id="boardCode" value="TOP_BOARD_CD_001_002"/>
+						<field id="typeCode" value=""/>
+						<field id="docSrc" value="NIPA ITFind"/>
+						<field id="uuid" modify="makeUUID"/>					
+	                	<field id="datetime" xpath="//thead/tr/th[(text()='발  행  일')]/following-sibling::td[1]/text()" datetimeParseFormat="yyyy.MM.dd" datetimeFormat="yyyy.MM.dd"/>
+	                    <field id="titles" xpath="//thead/tr/th[(text()='제       목')]/following-sibling::td/text()"/>
+	                    <field id="title" value = "[${field.book_}]${field.titles}"/>	                    	                    
+	                    <field id="content" xpath="//tbody/tr/td/text()" />	                    
+	                    <field id="fileuuid" modify="makeUUID"/>	                    
+	                    <field id="atchname" xpath="//thead/tr/td/a/text()"/>
+	                    <field id="filename" xpath="//thead/tr/td/a/text()" dependOn="atchname" value="${sys.now}" />
+	                    <field id="atchlink" xpath="//thead/tr/td/a/@href">
+	                        <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+	                        <field id="filesize" value="${field.atchfile.fileSize}"/>
+	                    </field>
+						</document>
+	                </block>
+                    </block>
+                    </field>
+                </block>
+            </block>
+        </block>        
+	</process>
+</category>
+

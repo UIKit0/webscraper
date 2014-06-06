@@ -1,0 +1,20 @@
+==webscraper board v1.1 릴리즈==
+*하위호완작업 필요. 
+ - library : toolcat.jar, httpclient.jar
+ - 설정파일 : catbot.xml
+
+* DB Connection Pool 적용.
+ - toolcat v1.0 라이브러리 필요.
+ 
+* Http Client Connection Pool 적용
+ - Apache httpclient v4.2.1 이상 라이브러리 필요.
+ 
+* 설정파일 변경.
+ - catbot.xml 에 dbpool 노드	추가.
+ 
+  <dbpool>
+		<maxTotal>1</maxTotal>
+		<maxIdle>0</maxIdle>
+		<maxWait>30</maxWait>
+		<maxAge>300</maxAge>
+	</dbpool>

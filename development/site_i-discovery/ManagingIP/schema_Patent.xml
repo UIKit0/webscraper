@@ -1,0 +1,42 @@
+<category name="Patent" description="Managing Patent" version="1.0" duplicationAction="SKIP_WHEN_DUPLICATION">
+	<pagelist>
+	  <!--
+		<page encoding="UTF-8" from="1" to="7" method="get">
+			<url>http://www.managingip.com/Managing-Patents-Archive.html?Year=2010&amp;Month=${i}</url>
+		</page>		
+		<page encoding="UTF-8" from="1" to="12" method="get">
+			<url>http://www.managingip.com/Managing-Patents-Archive.html?Year=2011&amp;Month=${i}</url>
+		</page>
+		<page encoding="UTF-8" from="1" to="7" method="get">
+			<url>http://www.managingip.com/Managing-Patents-Archive.html?Year=2012&amp;Month=${i}</url>
+		</page>		
+	!-->		
+
+  	<page encoding="UTF-8" method="get">
+			<url>http://www.managingip.com/Managing-Patents</url>
+		</page>			
+
+	</pagelist>
+	<!-- for full collect
+	<process rootPath="//ul[@class='news_list archive_list no_border']/li" >
+    !--> 
+   <process rootPath="//li[@class='channel']//a[contains(@id,'ctl00_ContentPlaceHolder1_znTop_ctl02')]" >       
+    <field id="upperBoardCode" value="TOP_BOARD_CD_006"/>
+    <field id="boardCode" value="TOP_BOARD_CD_006_001"/>
+    <field id="typeCode" value="TOP_BOARD_CD_006_001_001"/>
+		
+		<field id="docSrc" value="Managing Patents"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="link_" prefix="http://www.managingip.com" xpath="//a/@href" >
+             <block id="linkContent" linkPage="true" >
+                <block id="linkContentBlock" xpath="//body">
+                	<field id="datetime" xpath="//p[@class='story_date']/text()" datetimeParseFormat="dd MMMM yyyy" dateLocale= "Locale.US" setCurrentTimeWhenNULL="true" setDataWithPrevValueWhenNull="true"  datetimeFormat="yyyy.MM.dd"/>
+                    <field id="title" prefix="[Patent]" xpath="//h1[@class='section ruled']/span/text()"/>
+                    <field id="content"  xpath="//div[@class='article_content']"  multiLines="true" modify="IPManagingIssueModifier" />     
+                </block>
+            </block>
+        </field>
+	</process>
+	
+</category>
+

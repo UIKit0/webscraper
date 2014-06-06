@@ -1,0 +1,38 @@
+<category name="NRF" description="산학협력백서" version="1.0">
+	<pagelist>		
+		<page encoding="UTF-8" from="1" to="5" method="get">
+			<url>http://www.nrf.re.kr/nrf_tot_cms/board/notice/list.jsp?show_no=205&amp;c_now_tab=0&amp;check_no=176&amp;c_relation=bizmenu&amp;c_relation2=41&amp;c_relation3=0&amp;c_relation4=0&amp;page=${i}</url>
+		</page>		
+	</pagelist>
+
+	<process rootPath="//td[@class='cell_left']" >        
+	    <field id="upperBoardCode" value="TOP_BOARD_CD_004"/>
+	    <field id="boardCode" value="TOP_BOARD_CD_004_004"/>
+	    <field id="typeCode" value="TOP_BOARD_CD_004_004_003"/>
+		<field id="docSrc" value="한국연구재단"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="linkbase" xpath="//a/@onclick" pk="true" parseJavascript="true" value="${0}" >
+        	 <field id="link_" value="http://www.nrf.re.kr/nrf_tot_cms/board/notice/view.jsp?show_no=205&amp;c_now_tab=0&amp;check_no=176&amp;c_relation=bizmenu&amp;c_relation2=41&amp;c_relation3=0&amp;c_relation4=0&amp;NTS_NO=${field.linkbase}&amp;page=1" >
+             <block id="linkContent" linkPage="true" linkMethod="post">
+                <block id="linkContentBlock" xpath="//div[@id='id_for_print' and @class='content']">
+                	<field id="datetime" xpath="//tbody/tr/td[4]" regexp="([0-9]+-[0-9]+-[0-9]+)" setCurrentTimeWhenNULL="true" setDataWithPrevValueWhenNull="true" datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyy.MM.dd"/>
+                    <field id="title" xpath="//th[@class='td_title']/text()" tagRemove="true"/>                    
+                    <field id="content"  xpath="//td[@class='bd_view_txt']" tagRemove2="true" tagWhiteList="img,br" resourcePathRewrite="true" multiLines="true" />
+                    
+                    <block multiNode="true" xpath="//img[@class='file_icon']/../a" >
+                    	<field id="atchname" xpath="//text()" />
+		                <field id="fileuuid" modify="makeUUID"/>
+		                <field id="filename" dependOn="atchname" value="${sys.now}" />
+		                <field id="atchlink" xpath="//@href" prefix = "http://www.nrf.re.kr" >
+		                    <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+		                    <field id="filesize" value="${field.atchfile.fileSize}"/>
+		                </field>	            
+	                </block> 
+                    
+                </block>
+            </block>
+            </field>
+        </field>
+	</process>
+</category>
+

@@ -1,0 +1,5 @@
+﻿<site name="kiat" description="KIAT 이슈페이퍼">
+	<charset>utf-8</charset>
+	<dataHandler>idiscovery</dataHandler>
+	<timeOut>60000</timeOut>
+</site>

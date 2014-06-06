@@ -1,0 +1,5 @@
+<site name="kisti" description="글로벌 기술 동향">
+	<charset>utf-8</charset>
+	<timeOut>60000</timeOut>
+	<dataHandler>idiscovery</dataHandler>
+</site>

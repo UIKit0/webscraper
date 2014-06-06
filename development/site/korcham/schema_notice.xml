@@ -1,0 +1,36 @@
+<category name="notice" description="공지사항" version="1.0">
+	
+	<pagelist>
+		<page encoding="utf-8" from="1" to="21" method="get">
+			<url>http://uiwangcci.korcham.net/subMenu01.cci?searchWord=&amp;searchType=ALL&amp;branch_id=&amp;branch_child_id=&amp;list_start_date=&amp;list_end_date=&amp;list_show_answer=&amp;menuId=786&amp;subMenuId=3747&amp;act=LIST&amp;pageNum=${i}&amp;pageSize=15</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//div[@class='board_list']/table/tbody/tr/td[@headers='board_num' and number(text())]/.." >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="${site.description}"/>
+		<field id="time" xpath="(//td)[4]/text()" datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyyMMddHHmmss"/>
+		<block id="notHeader" xpath="(//td)[3]/a/img" headerValidation="isEmpty"/>
+		
+		<field id="link" xpath="(//td)[2]//a/@href" prefix="http://uiwangcci.korcham.net/subMenu01.cci" linkMethod="GET" >
+			 <field id="idx" pk="true" parseUrl="true" number="true" value="${boardId}"/>
+			 <block id="linkContent" linkPage="true" linkMethod="post">
+				<block id="linkContentBlock" xpath="//body">
+					<field id="title" xpath="(//td[@class='tongboard_view'])[1]/text()" tagRemove2="true" />
+					<field id="content" xpath="(//td[@class='tongboard_view'])[5]"  tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+					<field id="author" xpath="(//td[@class='tongboard_view'])[2]" />
+					<field id="atchname" xpath="(//td[@class='tongboard_view' and @colspan='3'])//a/text()" />
+					<field id="filename" dependOn="atchname" value="${sys.now}"/>
+					<field id="atchlink" dependOn="atchname" prefix="http://uiwangcci.korcham.net" xpath="(//td[@class='tongboard_view' and @colspan='3'])//a/@href" >
+						<block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>
+
+	</process>
+
+</category>

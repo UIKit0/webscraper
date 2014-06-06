@@ -1,0 +1,7 @@
+﻿<site name="ManagingIP" description="Managing IP">
+	<charset>UTF-8</charset>
+	<dataHandler>idiscovery</dataHandler>	
+	<head-params key="Cookie">login_info=SubGuid=4eb783ec-7572-470c-8482-e08f9fad23db&amp;ExpiresWithSession=0;session_info_292=UserID=2413496&amp;DisplayName=GAYOUNG+SEOUNG&amp;Username=gayoung.seong@i-discovery.com&amp;Status=2&amp;SubscriptionID=4544886&amp;NumberOfLogons=1&amp;CompanyType=&amp;StartDate=2012-02-01&amp;TrialExpiryDate=2012-01-11&amp;SubscriptionExpiryDate=2020-12-31&amp;SubscriberLevel=Subscriber&amp;CAPMasterSubscriberLevel=0</head-params>
+	<timeOut>10000</timeOut>
+
+</site>

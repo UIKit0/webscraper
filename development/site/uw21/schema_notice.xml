@@ -1,0 +1,34 @@
+<category name="notice" description="공지사항">
+
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="2" method="get">
+			<url>http://www.uw21.net/hospital/info/notice?searchType=ALL&amp;searchWord=&amp;branch_session=&amp;pageSize=15&amp;pageNum=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//div[@class='board_list']/table/tbody//tr" >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="${site.description}"/>
+		<block xpath="(//td)[1]/text()" headerValidation="isNumber"/>
+		<field id="time" xpath="(//td)[4]/text()" datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyyMMddHHmmss"/>
+		<field id="author" xpath="(//td)[3]/text()" />
+		<field id="link" xpath="((//td)[2]//a)[1]/@href"  parseJavascript="true" value="http://www.uw21.net/hospital/info/notice/?boardId=${0}&amp;act=VIEW" >
+			  <field id="idx" pk="true" parseUrl="true" number="true" value="${boardId}"/>
+			 <block id="linkContent" linkPage="true">
+				<block id="linkContentBlock" xpath="//body">
+					<field id="title" xpath="(//div[@class='board_view']/table/tbody//tr)[1]/td" tagRemove2="true" />
+					<field id="content" xpath="//td[@class='board_contents']"  tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+					<field id="atchname" xpath="((//div[@class='board_view']/table/tbody//tr)[4]/td//a)[2]/text()" />
+					<field id="filename" dependOn="atchname" value="${sys.now}"/>
+					<field id="atchlink" dependOn="atchname" xpath="((//div[@class='board_view']/table/tbody//tr)[4]/td//a)[2]/@href" parseJavascript="true" value="http://www.uw21.net/cms/board/Download.jsp?fileId=${0}" >
+						<block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>
+	</process>
+
+</category>

@@ -1,0 +1,30 @@
+<category name="notice" description="공지사항">
+	<pagelist>
+		<page encoding="utf-8" from="1" to="1" method="get">
+			<url>http://uwsenior.or.kr/bbs/?act=bbs&amp;bid=notice&amp;order_index=intSeq&amp;order_type=desc&amp;list_style=list&amp;page=${i}</url>
+		</page>
+	</pagelist>
+	<process rootPath="//div[@class='list_body']/table[@class='bbsList']/tbody[2]/tr" >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="${site.description}"/>
+		<block xpath="//td[@class='num']/text()" headerValidation="isEmpty" />
+		<field id="link" xpath="//td[3]//a/@href" prefix="http://uwsenior.or.kr/bbs" removeAll="\.\.">
+			<field id="idx" pk="true" parseUrl="true" number="true" value="${seq}"/>
+			<block id="linkContent" linkPage="true" linkMethod="get">
+				<block id="linkContentBlock" xpath="//div[@id='boardModule'][1]">
+					<field id="title" xpath="//div[@class='read_header']/h4" tagRemove2="true"/>
+					<field id="content" xpath="//div[@class='read_body']" tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+					<field id="time" xpath="//div[@class='read_header']/ul/li[4]/node()[3]" datetimeParseFormat="yyyy-MM-dd a HH:mm:ss" datetimeFormat="yyyyMMddHHmmss"/>                 
+					<field id="atchname" xpath="//ul[@class='files']/li/a/text()" multiNode="true" >
+						<field id="filename" dependOn="atchname" value="${sys.now}"/>
+						<field id="atchlink" dependOn="atchname" xpath="//a/@href"  parseJavascript="true" value="http://uwsenior.or.kr/bbs/${0}" />
+						<block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>	
+	</process>
+</category>

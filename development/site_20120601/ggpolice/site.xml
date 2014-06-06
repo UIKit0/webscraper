@@ -1,0 +1,7 @@
+<site name="ggpolice" description="의왕경찰서">
+	<charset>euc-kr</charset>
+	<dataHandler>notice</dataHandler>
+	<login>
+		<url>http://www.ggpolice.go.kr/new_seo/index.asp?LocalbranchKey=uw</url>
+	</login>
+</site>

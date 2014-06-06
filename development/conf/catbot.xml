@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catbot>
+	<agent>Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 1.1.4322; .NET CLR 2.0.50727)</agent>
+	<http>
+		<http-header key="" />
+	</http>
+	<workerCount>1</workerCount>
+	<debug>true</debug>
+	<initialSize>5</initialSize>
+	<repository>mysqldb</repository>
+	
+	<siteList path="site">	
+			<site>carenuri</site>
+	</siteList>
+
+	<dbpool>
+		<maxTotal>1</maxTotal>
+		<maxIdle>0</maxIdle>
+		<maxWait>30</maxWait>
+		<maxAge>300</maxAge>
+	</dbpool>
+	<property key="download.dir">/tmp</property><!-- D:\WEBROOT\pms\attachment\PMS\INFO_DB -->
+	<property key="interval.delay.time.max">10</property>
+	<property key="interval.delay.time.type">random</property>
+	
+	<modifier key="makeUUID">com.websqrd.fastcat.user.intellectual.IDisScrapModifier</modifier>
+	<modifier key="IPManagingIssueModifier">com.websqrd.fastcat.user.intellectual.IPManagingIssueModifier</modifier>
+	<modifier key="IAMMagazineBlogModifier">com.websqrd.fastcat.user.intellectual.IAMMagazineBlogModifier</modifier>
+</catbot>                                                                         

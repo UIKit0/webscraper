@@ -1,0 +1,48 @@
+﻿<category name="Journal" description="ETRI 영문저널" version="1.0">
+	<pagelist>		
+		<page encoding="euc-kr" from="2012" to="2020" method="get">
+			<url>http://etrij.etri.re.kr/Cyber/servlet/BrowseEtriJournal?publishedYear=${i}</url>
+		</page>		
+	</pagelist>
+
+	<process rootPath="//td[@bgcolor='#EEEEEE']" >
+		
+		<block id="root" multiNode="true" xpath = "//a[contains(text(),'Vol.')]">
+		<field id="book_" xpath = "//text()" />
+		<block id="rootlink" xpath = "//@href"	parseUrl="true" value = "http://etrij.etri.re.kr/Cyber/servlet/BrowseEtriJournal?vol=${vol}&amp;num=${num}">			
+			<block id="rootlinkContent" linkPage="true">				
+				<block id="rootlinkContentBlock" multiNode="true" xpath="//span[@class='name']/../../a">        
+					<field id="link_" pk="true"  xpath="//@href" parseUrl="true" value = "http://etrij.etri.re.kr/Cyber/servlet/BrowseAbstract?vol=${vol}&amp;num=${num}&amp;pg=${pg}" >   
+			             <block id="linkContent" linkPage="true">
+			                <block id="linkContentBlock" xpath="/html">
+			                	<document id="document">
+				                	<field id="upperBoardCode" value="TOP_BOARD_CD_002"/>
+									<field id="boardCode" value="TOP_BOARD_CD_002_005"/>
+									<field id="typeCode" value=""/>
+									<field id="docSrc" value="ETRI"/>
+									<field id="uuid" modify="makeUUID"/>
+				                	<field id="datetimestr"  xpath="//head/title/text()" regexp="([a-zA-Z]+ [0-9]+)," removeAll="\." />
+				                	<field id="datetime" datetimeParseFormat="MMM yyyy" dateLocale= "Locale.US"  value = "${field.datetimestr}" setCurrentTimeWhenNULL="true" setDataWithPrevValueWhenNull="true" datetimeFormat="yyyy.MM.dd"/>
+				                    <field id="titles" xpath="//span[@class='name']/text()"/>
+				                    <field id="title" value = "[${field.book_}]${field.titles}"/>	         
+				                    <field id="content" xpath="//table[@cellpadding='2']/tbody/tr[2]" tagWhiteList="br" multiLines="true" tagRemove="true" />
+				                    <field id="fileuuid" modify="makeUUID"/>
+				                    <field id="atchname" xpath="//td[@bgcolor='#EEEEEE']//td/a[contains(@href,'fileid')]/@href" parseUrl="true" value="${fileid}.pdf"  />
+				                    <field id="filename" dependOn="atchname" value="${sys.now}"/>
+				                    <field id="atchlink" prefix = 'http://etrij.etri.re.kr' xpath="//td[@bgcolor='#EEEEEE']//td/a[contains(@href,'fileid')]/@href">
+				                        <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+				                        <field id="filesize" value="${field.atchfile.fileSize}"/>
+				                    </field>
+			                    </document>
+			                </block>
+			            </block>
+			        </field>        
+        
+        		</block>
+        	</block>
+        </block>        
+        </block>        
+        
+	</process>
+</category>
+

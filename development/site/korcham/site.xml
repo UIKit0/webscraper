@@ -1,0 +1,4 @@
+<site name="korcham" description="상공회의소">
+	<charset>euc-kr</charset>
+	<dataHandler>notice</dataHandler>
+</site>

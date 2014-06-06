@@ -1,0 +1,35 @@
+<category name="notice" description="공지사항">
+	
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="6" method="get">
+			<url>http://www.uuc.or.kr/customer/notice.php?SearchKey=&amp;SearchKeyValue=&amp;boardCd=WEB_NEWS&amp;deptCd=ALL&amp;menuAuth=&amp;s_gubun=&amp;s_day_from=&amp;e_day_to=&amp;CurrPageNo=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//div[@id='list_bottom_line']/table/tbody/tr" >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="도시공사"/>
+		<field id="time" xpath="(//td)[6]/text()" datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyyMMddHHmmss"/>
+		<field id="author" xpath="(//td)[5]/text()" />
+		<field id="link" xpath="(//td)[3]/p/a/@href" prefix="http://www.uuc.or.kr"  suffix="" >
+			 <field id="idx" pk="true" parseUrl="true" number="true" value="${writingNo}"/>
+			 <block id="linkContent" linkPage="true">
+				<block id="linkContentBlock" xpath="//div[@class='groupBoardWrite']">
+					<field id="title" xpath="//td[@class='td85' and not(a)]/text()" type="varchar(100)"/>
+					<field id="content" xpath="//td[@class='td85Text']" tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+					<field id="atchname" xpath="//td[@class='td85']/a/text()" />
+					<field id="filename" dependOn="atchname" value="${sys.now}"/>
+					<field id="atchlink" dependOn="atchname" xpath="//td[@class='td85']/a/@href" >
+						<block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>	
+		
+	</process>
+
+</category>
+

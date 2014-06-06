@@ -1,0 +1,5 @@
+﻿<site name="NRF" description="산학협력재단">
+	<charset>utf-8</charset>
+	<dataHandler>idiscovery</dataHandler>
+	<timeOut>10000</timeOut>
+</site>

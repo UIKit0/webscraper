@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="lib" path="lib/derby.jar"/>
+	<classpathentry kind="lib" path="lib/htmlcleaner.jar" sourcepath="devresources/htmlcleaner_src.zip"/>
+	<classpathentry kind="lib" path="lib/jaxen-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar" sourcepath="devresources/jdom-1.1.3.zip"/>
+	<classpathentry kind="lib" path="lib/jetty-6.1.26.jar"/>
+	<classpathentry kind="lib" path="lib/jetty-util-6.1.26.jar"/>
+	<classpathentry kind="lib" path="lib/js.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-1.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/logback-access-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/logback-classic-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/logback-core-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/jsp/commons-el.jar"/>
+	<classpathentry kind="lib" path="lib/jsp/jasper-compiler-5.5.15.jar"/>
+	<classpathentry kind="lib" path="lib/jsp/jasper-compiler-jdt-5.5.15.jar"/>
+	<classpathentry kind="lib" path="lib/jsp/jasper-runtime-5.5.15.jar"/>
+	<classpathentry kind="lib" path="lib/jsp/jsp-api-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/jdbc/cubrid_jdbc.jar"/>
+	<classpathentry kind="lib" path="lib/jdbc/jtds.jar"/>
+	<classpathentry kind="lib" path="lib/jdbc/mysql-connector-java-ga-bin.jar"/>
+	<classpathentry kind="lib" path="lib/jdbc/postgresql-9.0-801.jdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/jdbc/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="lib/jdbc/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="lib/jsoup-1.6.2.jar"/>
+	<classpathentry kind="lib" path="lib/websqrd_libs.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/toolcat.jar" sourcepath="/toolcat"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="lib" path="development/conf"/>
+	<classpathentry kind="lib" path="lib/httpclient/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient/fluent-hc-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient/httpclient-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient/httpclient-cache-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient/httpcore-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient/httpmime-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

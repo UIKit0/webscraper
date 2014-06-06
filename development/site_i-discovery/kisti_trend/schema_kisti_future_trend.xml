@@ -1,0 +1,27 @@
+﻿<category name="kisti_future_trend" description="미래유망기술" version="1.0">
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="2" method="get">
+			<url>http://mirian.kisti.re.kr/futuretech/kisti_trend/kisti_l.jsp?curr_page=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//td[@width='723']/table/tbody/tr[count(td)>1]" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_004"/>
+		<field id="boardCode" value="TOP_BOARD_CD_004_001"/>
+		<field id="typeCode" value=""/>
+		<field id="docSrc" value="KISTI"/>
+		<field id="uuid" modify="makeUUID"/>
+		<field id="datetime" xpath="(//td)[7]/div/span/text()" datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyy.MM.dd"/>
+        <field id="id" pk="true" xpath="(//td)[5]//a/@href" parseJavascript="true" value="${0}">        
+            <field id="link_" value="http://mirian.kisti.re.kr/futuretech/kisti_trend/kisti_v.jsp?record_no=${field.id}">
+                 <block id="linkContent" linkPage="true">
+                    <block id="linkContentBlock" xpath="//div[@id='pTable']">
+                        <field id="title" xpath="//td[@class='text02_title_bold']/text()"/>
+                        <field id="content" prefix="&lt;table id='_kisti'&gt;&lt;tr&gt;" suffix="&lt;/tr&gt;&lt;/table&gt;" xpath="//td[span[@class='text02_subject_content']]" resourcePathRewrite="true" />                    
+                    </block>
+                </block>
+            </field>
+        </field>
+	</process>
+</category>
+

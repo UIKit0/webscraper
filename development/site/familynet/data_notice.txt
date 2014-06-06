@@ -1,0 +1,25 @@
+content : <img height="876" alt="" src="http://www.familynet.or.kr/data/inno/2012-06-07/6%BF%F9%20%C7%C1%B7%CE%B1%D7%B7%A5%20%BE%C8%B3%BB.jpg" width="619" align="left" />
+time : 20120607000000
+title : 6월 프로그램 안내
+idx : 17183
+siteId : familynet
+orgname : 건강가정지원센터
+link : http://uiwang.familynet.or.kr/area_center/know/notice_view.php?seq=17183
+categoryId : notice
+shortname : 건강가정지원센터
+--------------------------
+filesize.1 : 14336
+idx : 17161
+categoryId : notice
+link : http://uiwang.familynet.or.kr/area_center/know/notice_view.php?seq=17161
+atchname.1 : 2012-아이돌봄서비스연장 신청서 서식.hwp
+atchfile.fileSize.1 : 14336
+content : <table style="BORDER-RIGHT: #000000 0.28pt solid; BORDER-TOP: #000000 0.28pt solid; BORDER-LEFT: #000000 0.28pt solid; BORDER-BOTTOM: #000000 0.28pt solid; BORDER-COLLAPSE: collapse"><tbody><tr><td style="BORDER-RIGHT: #000000 0.28pt solid; PADDING-RIGHT: 5.1pt; BORDER-TOP: #000000 0.28pt solid; PADDING-LEFT: 5.1pt; PADDING-BOTTOM: 1.41pt; BORDER-LEFT: #000000 0.28pt solid; WIDTH: 419.54pt; PADDING-TOP: 1.41pt; BORDER-BOTTOM: #000000 0.28pt solid; HEIGHT: 38.29pt"> <p> </p><p> </p><p> 2012년 의왕시건강가정지원센터 </p> <p> 아이돌봄지원사업 시간 연장 서비스 신청안내 </p> <p> </p><p> </p></td></tr><tr><td style="BORDER-RIGHT: #000000 0.28pt solid; PADDING-RIGHT: 5.1pt; BORDER-TOP: #000000 0.28pt solid; PADDING-LEFT: 5.1pt; PADDING-BOTTOM: 1.41pt; BORDER-LEFT: #000000 0.28pt solid; WIDTH: 419.54pt; PADDING-TOP: 1.41pt; BORDER-BOTTOM: #000000 0.28pt solid; HEIGHT: 309.97pt"> <p> </p><p> </p><p> 1. 아이돌봄 서비스 시간 연장 서비스 대상기준 </p> <p> ○ 예산 및 신규가정 수요 등을 고려하여 취업 한부모 및 맞벌이 가정 등 생계활동으로 양육공백이 우려되는 가정, </p> <p> </p><p> </p><p> ○ 다자녀 가구(만 12세 이하 아동 3명 이상, 만 36개월 이하 아동 2명 이상), </p> <p> ○ 장애부모, 장애아동을 포함한 아동 2명 이상 양육가정, 장기 질병 등의 합리적 사유의 경우 </p> <p> </p> <p> 2. 서비스 연장 절차 </p> <p> ① 서비스연장 신청서 작성 → ② 대상가정 현황조사(전화.방문) → </p> <p> ③ 선정위원회를 통한 연장 확정 </p> <p> </p> <p> 3. 선정위원회 일시 및 역할 </p> <p> ① 6월 . 8월 중 연 2회 </p> <p> ② 서비스 연장 시간 결정 </p> <p> </p> <p> 4. 지원시간 초과 사용시 라형으로 전환 이용 가능 </p> <p> </p><p> </p><p> 5. 아이돌봄사업은 1년 사업으로 사업비 조기 종료시 </p> <p> 100% 본인 부담으로 돌봄 서비스 이용가능 </p> <p> </p> <p> 문의전화 아이돌봄 사업 담당자 조희남 031)-441-2075 </p> </td></tr></tbody></table>
+title : 2012년 아이돌봄지원사업 시간연장 서비스 신청안내
+time : 20120604000000
+siteId : familynet
+orgname : 건강가정지원센터
+filename.1 : 1339484027360
+shortname : 건강가정지원센터
+atchlink.1 : http://uiwang.familynet.or.kr/inc/download_file.php?filename=/data/admin/board_notice/2012-06-04/2012-아이돌봄서비스연장 신청서 서식.hwp
+--------------------------

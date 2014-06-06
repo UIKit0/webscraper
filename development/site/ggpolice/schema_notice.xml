@@ -1,0 +1,25 @@
+<category name="notice" description="공지사항" version="1.0">
+	
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="1" method="get">
+			<url>http://www.ggpolice.go.kr/new_seo_sub/sub.asp?mode=list&amp;pageno=${i}&amp;board_id=uw_notice&amp;folder_idx=162&amp;folder_page_idx=564</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//div[@class='article']" >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="link" xpath="/span[@class='tit']/a/@href" prefix="http://http://news.chosun.com">
+			 <field id="idx" pk="true" parseUrl="true" number="true" value="${idx}"/>
+			 <block id="linkContent" linkPage="true" linkMethod="post" >
+				<block id="linkContentBlock" xpath="//div[@id='bbs_wrap']">
+					<field id="title" xpath="//h2[@id='title_text']/text()" tagRemove2="true" />
+					<field id="content" xpath="//div[@class='par']/text()" tagRemove2="true" multiLines="true" />
+					<field id="time" xpath="//p[@id='date_text']/text()" datetimeParseFormat="yyyy.MM.dd HH:mm" datetimeFormat="yyyyMMddHHmmss"/>
+				</block>
+			</block>
+		</field>	
+	</process>
+
+</category>

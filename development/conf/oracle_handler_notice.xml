@@ -1,0 +1,161 @@
+<dataHandler name="notice">
+	<rollbackOnError>false</rollbackOnError>
+	<insertSql>
+		<sql>
+		INSERT INTO TEST.WCM_BOARD_B0428
+		(etc_1, etc_2, etc_3,etc_6, BOARD_ID, GROUP_ID, COMMUNITY_ID,RE_LEVEL,RE_DEPTH,TITLE,KOR_NAME,REAL_NAME,OPEN_YN
+		,RE_PROC_YN,CONTENTS,FILE_COUNT,READ_CNT,RECMD_CNT,MEMO_CNT,HTML_YN,SECRET_YN
+		,IP_ADDR,NOTIFY_YN,DBSTS,IS_INDEX,CREATE_DATE_MOD,START_DATE,END_DATE
+		,CREATE_DATE,CREATE_USER_ID,UPDATE_DATE,UPDATE_USER_ID)
+		VALUES
+		(?,?,?,TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'),WCM_BOARD_B0428_SEQ.NEXTVAL,WCM_BOARD_B0428_SEQ.CURRVAL,'B0428',0,0,?,?,?,'Y','Y',?,1,0,0,0,'Y','N','','N','A','N',?,?,TO_CHAR(ADD_MONTHS(TO_DATE(?,'YYYYMMDDHH24MISS'), 1), 'YYYYMMDDHH24MISS'),?,'admin',?,'admin')
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+		<field>title</field>
+		<field>shortname</field>
+		<field>orgname</field>
+		<field>content</field>
+		<field>time</field>
+		<field>time</field>
+		<field>time</field>
+		<field>time</field>
+		<field>time</field>
+
+		<sql multiple="true">
+		INSERT INTO TEST.WCM_FILE_APPD
+		(FILE_APPD_ID, APPD_FILE_NAME, SAVE_FILE_NAME, FILE_SIZE, SERVER_PATH, WEB_PATH, DBSTS
+		, CREATE_DATE, CREATE_USER_ID, UPDATE_DATE, UPDATE_USER_ID, COMMUNITY_ID, BOARD_ID, DOWN_CNT)
+		VALUES
+		(WCM_FILE_APPD_SEQ.NEXTVAL, ?, ?, ?, 'C:/UW/ROOT/cms/upload/board/B0428/', 'http://uw21.net/cms/upload/board/B0428/', 'A'
+		, ?, 'admin', ?, 'admin', 'B0428', WCM_BOARD_B0428_SEQ.CURRVAL, 0)
+		</sql>
+		<field notNull="true">atchname#</field>
+		<field>filename#</field>
+		<field>filesize#</field>
+		<field>time</field>
+		<field>time</field>
+	</insertSql>
+	
+	<updateSql>
+		<sql>
+		UPDATE TEST.WCM_BOARD_B0428
+		SET title=?,
+			kor_name=?,
+			real_name=?,
+			contents=?,
+			start_date=?,
+			end_date=?,
+			etc_6 as scr_time=?
+		WHERE etc_1=? AND etc_2=? AND board_id=?
+		</sql>
+		<field>title</field>
+		<field>kor_name</field>
+		<field>real_name</field>
+		<field>contents</field>
+		<field>start_date</field>
+		<field>end_date</field>
+		<field>scr_time</field>
+		
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+	</updateSql>
+	
+	<deleteSql>
+		<sql>
+		DELETE FROM TEST.WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=? AND board_id=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+	</deleteSql>
+	
+	<truncateSql>
+		<sql>
+		DELETE FROM TEST.WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+	</truncateSql>
+
+	<totalCountSql>
+		<sql>
+		SELECT COUNT(*) FROM TEST.WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+	</totalCountSql>
+	
+	<selectSql>
+		<sql>
+		SELECT
+			etc_3 AS pk,
+			board_id,
+			title,
+			kor_name,
+			real_name,
+			contents,
+			start_date,
+			end_date,
+			etc_6 as scr_time
+		FROM
+			(
+				SELECT
+					ROWNUM AS rn,
+					A .*
+				FROM
+					(
+						SELECT
+							*
+						FROM
+							WCM_BOARD_B0428
+						WHERE
+							etc_1 = ? AND etc_2 = ?
+						ORDER BY
+							board_id DESC
+					) A
+			)
+		WHERE
+			rn &gt;= ? AND rn &lt; ?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+	</selectSql>
+	
+	<showFields>
+		<field caption="아이디" id="true">BOARD_ID</field>
+		<field caption="게시물번호">PK</field>
+		<field caption="제목">TITLE</field>
+		<field caption="내용">CONTENTS</field>
+		<field caption="수집일자">SCR_TIME</field>
+		<field caption="시작일자">START_DATE</field>
+		<field caption="종료일자">END_DATE</field>
+	</showFields>
+	
+	<selectByIdSql>
+		<sql>
+		SELECT  
+			etc_3 AS pk,
+			board_id,
+			title,
+			kor_name,
+			real_name,
+			contents,
+			start_date,
+			end_date,
+			etc_6 as scr_time
+		FROM 
+		TEST.WCM_BOARD_B0428
+		WHERE etc_1=? AND etc_2=? AND board_id=?
+		</sql>
+		<field>siteId</field>
+		<field>categoryId</field>
+		<field>idx</field>
+	</selectByIdSql>
+	
+</dataHandler>

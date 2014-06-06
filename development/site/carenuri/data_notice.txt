@@ -1,0 +1,32 @@
+idx : 149
+atchfile.fileSize : 423936
+categoryId : notice
+link : http://www.carenuri.or.kr/sub04_1.html?no=149&gubun=notice&cnum=51&cline=0&page=1&inpage=2&ref=1354160478
+content : 11월1,2주차 식단표 <br/>
+author : 관리자
+filesize : 423936
+title : 11월1,2주차 식단표
+time : 20121102180107
+siteId : carenuri
+orgname : 건강누리노인요양원
+shortname : 노인요양원
+atchname : 11월식단.xls
+filename : 1354160489948
+atchlink : http://www.carenuri.or.kr/_board/basic/download.php?gubun=notice&no=55&pno=149&seq=0&name=11월식단.xls
+--------------------------
+idx : 148
+atchfile.fileSize : 423936
+categoryId : notice
+link : http://www.carenuri.or.kr/sub04_1.html?no=148&gubun=notice&cnum=50&cline=1&page=1&inpage=2&ref=1354160478
+content : 10월3,4주차 식단표 <br/>
+author : 관리자
+filesize : 423936
+title : 10월3,4주차 식단표
+time : 20121102175947
+siteId : carenuri
+orgname : 건강누리노인요양원
+shortname : 노인요양원
+atchname : 10월식단.xls
+filename : 1354160494859
+atchlink : http://www.carenuri.or.kr/_board/basic/download.php?gubun=notice&no=54&pno=148&seq=0&name=10월식단.xls
+--------------------------

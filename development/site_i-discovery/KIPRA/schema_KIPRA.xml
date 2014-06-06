@@ -1,0 +1,42 @@
+﻿<category name="KIPRA" description="NPEs Newsletter" version="1.0">
+	<pagelist>		
+		<page encoding="euc-kr" from="1" to="2" method="get">
+			<url>http://www.kipra.or.kr/bbs/list.php?board_id=conflict&amp;page=${i}</url>
+		</page>		
+	</pagelist>
+
+	<process rootPath="//td[@class='title']/a" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_003"/>
+		<field id="boardCode" value="TOP_BOARD_CD_003_002"/>
+		<field id="typeCode" value=""/>
+		<field id="docSrc" value="지식재산보호협회"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="pageNum"  parseJavascript="true" xpath="//a/@href" value="${1}" />
+        <field id="contentNum" pk="true" parseJavascript="true" xpath="//a/@href" value="${0}" />
+        <field id="link_" value="http://www.kipra.or.kr/bbs/list.php?board_id=conflict&amp;page=${field.pageNum}&amp;content_uid=${field.contentNum}">
+             <block id="linkContent" linkPage="true" >
+                <block id="linkContentBlock" xpath="//div[@id='contentArea']">
+                	<block id="datetimestr1" xpath="//td[@class='title']/text()" regexp = "([0-9]+년 [0-9]+월)" replaceAll="년" replaceTo="" >
+                		<block id="datetimestr2" removeAll="년" >
+                			<field id="datetime" datetimeParseFormat="yy MMM" datetimeFormat="yyyy.MM.dd"/>
+                		</block>
+                	</block>
+                    <field id="title" xpath="//td[@class='title']/text()"/>
+                    <field id="fileuuid" modify="makeUUID"/>
+                    <field id="mapname" xpath="//img[contains(@usemap,'Map')]/@usemap" />
+                    <field id="imgtag" value = "&lt;img src='/ServletController?AIR_ACTION=SYS_ATTACHMENT&amp;AIR_MODE=FILE_DOWNLOAD&amp;uuid=${field.fileuuid}'  usemap='${field.mapname}'  /&gt;" />
+                    <field id="imgmap"  xpath="//map" />
+                    <field id="content" value = "${field.imgtag} ${field.imgmap} " />                                       
+                    <field id="atchname" value ="newletter.jpg" />
+                    <field id="filename" dependOn="atchname" value="${sys.now}"/>
+                    <field id="atchlink" xpath="//img[contains(@usemap,'Map')]/@src" >
+                        <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}"/>
+                        <field id="filesize" value="${field.atchfile.fileSize}" validation="isNotEmpty"/>
+                    </field>
+                    
+                </block>
+            </block>
+        </field>
+	</process>
+</category>
+

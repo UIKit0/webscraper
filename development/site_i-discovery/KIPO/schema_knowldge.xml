@@ -1,0 +1,28 @@
+<category name="knowledge" description="지식재산백서" version="1.0">
+	<pagelist>		
+		<page encoding="euc-kr" method="get">
+			<url>http://www.kipo.go.kr/kpo/user.tdf?a=user.html.HtmlApp&amp;c=3072&amp;catmenu=m02_03_04</url>		
+		</page>		
+	</pagelist>
+
+	<process rootPath="//td[contains(text(),'지식재산백서')]/../../tr" >        
+        <field id="upperBoardCode" value="TOP_BOARD_CD_004"/>
+		<field id="boardCode" value="TOP_BOARD_CD_004_004"/>
+		<field id="typeCode" value="TOP_BOARD_CD_004_004_001"/>		
+		<field id="docSrc" value="특허청"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="link_" prefix="http://www.kipo.go.kr" pk="true" xpath="//a/@href" jsessionRemove="true"  />   
+    	<field id="datetimestr" regexp="([0-9]+)년"  />
+    	<field id="datetime" value="${field.datetimestr}-01-01" datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyy.MM.dd"/>
+        <field id="title" xpath="//td[contains(text(),'지식재산백서')]/text()"/>
+        <field id="fileuuid" modify="makeUUID"/>
+        <field id="content"  xpath = "//text()"  />
+        <field id="atchname" xpath="//a/@href" parseUrl="true" value = "${fn2}"/>
+        <field id="filename" dependOn="atchname" value="${sys.now}" />
+        <field id="atchlink" value='${field.link_}' >
+        <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}"/>
+        <field id="filesize" value="${field.atchfile.fileSize}" validation="isNotEmpty"/>	        
+        </field>
+	</process>
+</category>
+

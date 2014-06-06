@@ -1,0 +1,8 @@
+<site name="joonggonara" description="중고나라">
+	<charset>utf-8</charset>
+	<dataHandler>notice</dataHandler>
+	
+	<login>
+		<url>http://cafe.naver.com/joonggonara.cafe</url>
+	</login>
+</site>

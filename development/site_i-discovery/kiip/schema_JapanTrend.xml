@@ -1,0 +1,33 @@
+<category name="JapanTrend" description="일본동향" version="1.0">
+	<pagelist>		
+		<page encoding="euc-kr" from="1" to="2" method="get">
+			<url>http://www.kiip.re.kr/result01/resN00L.asp?TotitemGubn=1&amp;IP=1&amp;tot_gubn=1&amp;MenuStrong=JP&amp;s_value=&amp;tot_item_gubn=1&amp;tot_value=&amp;p_size=10&amp;p_no=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//td[@class='texttitlebold']/../.." > 
+        <field id="upperBoardCode" value="TOP_BOARD_CD_003"/>
+		<field id="boardCode" value="TOP_BOARD_CD_003_001"/>
+		<field id="typeCode" value="TOP_BOARD_CD_003_001_003"/>
+		<field id="docSrc" value="KIIP"/>
+		<field id="uuid" modify="makeUUID"/>
+		<field id="datetime" xpath="//div[@align='right']/text()" datetimeParseFormat="yyyy-MM-dd" setCurrentTimeWhenNULL="true" setDataWithPrevValueWhenNull="true" datetimeFormat="yyyy.MM.dd"/> 				
+    	<field id="link_" pk="true" prefix="http://www.kiip.re.kr/result01/" xpath="//@href" replaceAll="pageno=[0-9]+">
+             <block id="linkContent" linkPage="true" >
+                <block id="linkContentBlock" xpath="//table[@class='table_bg']">	            	
+	                <field id="title" xpath="//b/text()"/>
+	                <field id="content" xpath="//td[@id='td_content']" tagRemove2="true" tagWhiteList="br" multiLines="true" />                
+					<block id="atchname" multiNode="true" xpath="//td[@id='td_content']/p/a" >
+		                <field id="fileuuid" modify="makeUUID"/>
+		                <field id="filename" dependOn="atchname" value="${sys.now}" />
+		                <field id="atchlink" xpath="//@href">
+		                    <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+		                    <field id="filesize" value="${field.atchfile.fileSize}"/>
+		                </field>	            
+	                </block>
+                </block>
+            </block>
+        </field>     
+	</process>
+</category>
+

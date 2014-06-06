@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+<entry key="id">oracledb</entry>
+<entry key="encoding">UTF8</entry>
+<entry key="vendor">ORACLE</entry>
+<entry key="host">1.235.102.226</entry>
+<entry key="port">1521</entry>
+<entry key="db">IDDB</entry>
+<entry key="user">pms</entry>
+<entry key="password">idadmin</entry>
+</properties>

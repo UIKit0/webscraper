@@ -1,0 +1,4 @@
+<site name="uwglobal" description="글로벌도서관">
+	<charset>euc-kr</charset>
+	<dataHandler>notice</dataHandler>
+</site>

@@ -1,0 +1,34 @@
+<category name="Issue" description="한국산업기술진흥원 브리프및 이슈 페이퍼" version="1.0">
+	<pagelist>		
+		<page encoding="utf-8" method="get">
+			<url>http://www.kiat.or.kr/site/program/board/list.jsp?menuID=001004002&amp;type=&amp;boardTypeID=28&amp;searchSelect=&amp;keyWord=&amp;boardCategory=&amp;startDate=&amp;endDate=&amp;boardLines=10&amp;boardyear=2012&amp;yongeo=&amp;currentPage=1</url>
+		</page>		
+	</pagelist>
+
+	<process rootPath="//div[@id='content']/div/table/tbody/tr/td/a" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_003"/>
+		<field id="boardCode" value="TOP_BOARD_CD_003_004"/>
+		<field id="typeCode" value=""/>
+		<field id="docSrc" value="한국산업기술진흥원"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="link_" prefix="http://www.kiat.or.kr/site/program/board/" xpath="//a/@href">
+             <field id="pk" regexp="boardID=([0-9]+)" pk="true"/>
+             <block id="linkContent" linkPage="true" >
+                <block id="linkContentBlock" xpath="//div[@id='rightSection']">
+                	<field id="datetime" xpath="//div/table/tbody/tr/th[1]/following-sibling::td[1]/text()"  datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyy.MM.dd"/>
+                    <field id="title" xpath="//h3/text()"/>
+                    <field id="fileuuid" modify="makeUUID"/>
+                    <field id="content"  xpath="//div[@class='bContents']" tagRemove2="true" tagWhiteList="br" multiLines="true" />
+                    <field id="atchname" xpath="//div[@class='bFile']/ul/li/a/text()" />
+                    <field id="filename" dependOn="atchname" value="${sys.now}" />
+                    <field id="sublink"  xpath="//div[@class='bFile']/ul/li/a/@onclick" regexp="src=[']([^']*)['];" />
+                    <field id="atchlink" value="http://www.kiat.or.kr/site/program/board/${field.sublink}" replaceAll="program/board/../../" >
+                        <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}"/>
+                        <field id="filesize" value="${field.atchfile.fileSize}" validation="isNotEmpty"/>
+                    </field>                    
+                </block>
+            </block>
+        </field>
+	</process>
+</category>
+

@@ -1,0 +1,4 @@
+<site name="test" description="test">
+	<charset>utf-8</charset>
+	<dataHandler>notice</dataHandler>
+</site>

@@ -1,0 +1,39 @@
+﻿<category name="EDC" description="전자정보센터 동향분석" version="1.0">
+	<pagelist>
+		<page encoding="euc-kr" from="0" to="34" method="post">
+			<url>http://203.253.128.6:8088/servlet/eic.wism.EICWeb?Command=101&amp;listpage=${i}&amp;categoryID=C01&amp;statusID=0&amp;Login=Y&amp;UserId=id32&amp;UserLevel=4</url>			
+		</page>
+	</pagelist>
+
+	<process rootPath="//tbody//td[@class='bst1']/a" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_002"/>
+		<field id="boardCode" value="TOP_BOARD_CD_002_003"/>
+		<field id="typeCode" value=""/>
+		<field id="docSrc" value="KETI 전자정보센터"/>
+		<field id="uuid" modify="makeUUID"/>
+        <field id="did" pk="true" xpath="@href" parseJavascript="true" value="${0}" />
+        <field id="catid" xpath="@href" parseJavascript="true" value="${1}" />
+        <field id="link_" value="http://203.253.128.6:8088/servlet/eic.wism.EICWeb?doc_id=${field.did}&amp;category=${field.catid}&amp;UserId=&amp;UserLevel=&amp;Login=N&amp;Command=107">
+	        <block linkMethod="post" id="linkContent" linkPage="true">
+				<block id="linkContentBlock" xpath="//table[@bgcolor='#FFFFFF']">
+				    <field id="datetime" xpath="//table[@valign='top']/tbody/tr/td/text()" regexp="작성일 : (.+)" datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyy.MM.dd"/>
+				    <field id="title" xpath="//td[@bgcolor='#000000']/text()"/>
+				    <field id="content" xpath="//tbody/tr[4]/td[@colspan=4]" tagRemove2="true" tagWhiteList="img,br" resourcePathRewrite="true" multiLines="true" />                                                                    
+				    <field id="fileuuid" modify="makeUUID"/>
+		            <field id="atchname" xpath="//input[@name='filename']/@value" />
+		            <field id="filename" xpath="//input[@name='filename']/@value" replaceAll=".csd" replaceTo=".exe" /> 
+				    <field id="file_type" xpath="//input[@name='file_type']/@value" />
+				    <field id="drm" xpath = "//input[@name='drm']/@value" />
+				    <field id="cdoc_id" xpath="//input[@name='cdoc_id']/@value" />
+				    <field id="ccat_id" xpath="//input[@name='ccat_id']/@value" />
+				    <field id="command" xpath="//td[@bgcolor='#efefef']/a/@href" parseJavascript="true" value="${0}" />
+				    <field id="atchlink" value="http://203.253.128.6:8088/servlet/eic.wism.EICWeb?doc_id=${field.did}&amp;cat_id=${field.catid}&amp;file_type=${field.file_type}&amp;filename=${field.filename}&amp;drm=${field.drm}&amp;cdoc_id=${field.cdoc_id}&amp;ccat_id=${field.ccat_id}&amp;cevrt=2&amp;UserId=&amp;UserLevel=&amp;Login=Y&amp;Command=${field.command}" >
+				        <block id="atchfile" file="true" linkMethod="POST"  fileName="${field.filename}" copyTo="${var.download.dir}" />
+				        <field id="filesize" value="${field.atchfile.fileSize}"/>
+				    </field>
+				</block>
+			</block>
+        </field>
+	</process>
+</category>
+

@@ -1,0 +1,35 @@
+<category name="IPAC" description="IPAC 특허지원센터" version="1.0">
+	<pagelist>		
+		<page encoding="utf-8" from="0" to="1" method="post">
+			<url>http://www.ipac.kr/PatInfo/CeoBoardList.aspx?__EVENTTARGET=pagingcontrol1&amp;__EVENTARGUMENT=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//td[@class='align_l']" >
+        <field id="upperBoardCode" value="TOP_BOARD_CD_003"/>
+		<field id="boardCode" value="TOP_BOARD_CD_003_003"/>
+		<field id="typeCode" value="TOP_BOARD_CD_003_003_006"/>		
+		<field id="docSrc" value="한국전자정보통신산업진흥회"/>
+		<field id="uuid" modify="makeUUID"/>
+		<field id="num" xpath = "//a/@href" parseJavascript="true" value="${0}" />
+		<field id="row" xpath = "//a/@href" parseJavascript="true" value="${1}" />
+        <field id="link_" pk="true" value="http://www.ipac.kr/PatInfo/CeoBoardView.aspx?hidSelectedseq=${field.num}&amp;hidRowNum=${field.row}&amp;__EVENTTARGET=btnReadCount&amp;ddlField=title&amp;hidCurrentIndex=0&amp;hidPageSize=20&amp;hidBoardName=SPECIALREPORT" >
+             <block id="linkContent" linkPage="true" linkMethod="post"  >
+                <block id="linkContentBlock" xpath="//div[@id='content']">
+                	<field id="datetime" xpath="//span[@id='lblRegDate']/text()" datetimeParseFormat="yyyy.MM.dd" setCurrentTimeWhenNULL="true" setDataWithPrevValueWhenNull="true"  datetimeFormat="yyyy.MM.dd"/>
+                    <field id="title" xpath="//span[@id='lblTitle']/text()"/>
+                    <field id="fileuuid" modify="makeUUID"/>
+                    <field id="content"  tagRemove2="true" tagWhiteList="img,br" resourcePathRewrite="true" multiLines="true" />
+                    <field id="atchname" xpath="//span[@id='lblAttachFiles']/a/text()" />
+                    <field id="filename" dependOn="atchname" value="${sys.now}"/>
+                    <field id="atchlink" multiNode = "true" xpath="//img/@src" >
+                        <block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}"/>
+                        <field id="filesize" value="${field.atchfile.fileSize}" validation="isNotEmpty"/>
+                    </field>
+                    
+                </block>
+            </block>
+        </field>
+	</process>
+</category>
+

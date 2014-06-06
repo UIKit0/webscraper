@@ -1,0 +1,27 @@
+<category site="notice" version="1.0">
+	
+	<pagelist>
+		<page encoding="euc-kr" from="1" to="13" method="post">
+			<url>http://www.uwlib.or.kr/global/withlibrary/notice.asp?page1=${i}&amp;page_box=page1&amp;table_name=notice_board&amp;btype=bdcode&amp;bfile=select&amp;bwrite=s&amp;opening=0&amp;bdcode=001&amp;member_gubun=n</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//div[@class='boardlist_type1']/table/tbody//tr" >
+		<field id="commId" value="B017"/>
+		<field id="orgname" value="의왕시글로벌도서관"/>
+		<field id="time" xpath="(//td)[5]/text()" datetimeParseFormat="yyyy-MM-dd" datetimeFormat="yyyyMMddHHmmss"/>
+		<field id="author" xpath="(//td)[4]/text()" />
+		<field id="link" xpath="(//td)[2]/a/@href" parseJavascript="true" value="http://www.uwlib.or.kr/global/withlibrary/notice_view.asp?val_01=${3}&amp;table_name=notice_board" >
+			 <field id="idx" pk="true" parseUrl="true" number="true" value="${val_01}"/>
+			 <block id="linkContent" linkPage="true">
+				<block id="linkContentBlock" xpath="//body">
+					<field id="title" xpath="//tr[@class='first']/td/text()" />
+					<field id="content" xpath="//td[@class='details']" tagRemove2="true" multiLines="true" />
+					<field id="atchname" xpath="//div[@class='boardview_type1']/table//th[contains(text(),'첨부파일')]/../td/a/text()" />
+					<field id="atchlink" xpath="//div[@class='boardview_type1']/table//th[contains(text(),'첨부파일')]/../td/a/@href" prefix="http://www.uwlib.or.kr" />
+				</block>
+			</block>
+		</field>	
+	</process>
+
+</category>

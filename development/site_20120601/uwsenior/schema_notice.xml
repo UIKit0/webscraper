@@ -1,0 +1,34 @@
+<category name="notice" description="공지사항">1.0">
+	
+	<pagelist>
+		<page encoding="euc-kr" from="0" to="48" method="get">
+			<url>http://www.uwsenior.or.kr/board/list.php?board_id=0401&amp;category=&amp;search=subject&amp;key_word=&amp;pagenum=${i}</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="(//body/table/tbody/tr/td/table/tbody/tr/td//table)[4]/tbody//tr[td[@align='center' and not(table)] and not(td[@nowrap])]" >
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="아름채"/>
+		<block id="author" xpath="(//td)[1]/text()" headerValidation="isNotEmpty"/>
+		<field id="author" xpath="(//td)[3]/text()" />
+		<field id="link" xpath="(//td)[2]/a/@href" prefix="http://www.uwsenior.or.kr/board/">
+			<field id="idx" pk="true" parseUrl="true" number="true" value="${no}"/>
+			<block id="linkContent" linkPage="true" linkMethod="post">
+				<block id="linkContentBlock" xpath="//html">
+					<field id="title" xpath="(((//body/table/tbody/tr/td/table/tbody/tr/td/table)[1]/tbody//tr)[2]//td)[2]/text()" removeAll="^\w\W\W"/>
+					<field id="content" xpath="((//body/table/tbody/tr/td/table/tbody/tr/td/table)[2]/tbody//tr)[1]" tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+					<field id="time" xpath="//td[@class='board3' and @width='35%']/text()"  removeAll="^\w\W\W" datetimeParseFormat="yyyy-MM-dd HH:mm:ss" datetimeFormat="yyyyMMddHHmmss"/>
+					<field id="atchname" xpath="//td[@class='board3' and @colspan='3']/a/font/text()" />
+					<field id="filename" dependOn="atchname" value="${sys.now}"/>
+					<field id="atchlink" dependOn="atchname" xpath="//td[@class='board3' and @colspan='3']/a/@href" prefix="http://www.uwsenior.or.kr/board/" >
+						<field id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>	
+	</process>
+
+</category>

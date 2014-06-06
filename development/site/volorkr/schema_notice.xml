@@ -1,0 +1,34 @@
+<category name="notice" description="공지사항">
+	
+	<pagelist>
+		<page encoding="utf-8" from="1" to="1" method="post">
+			<url>http://www.vol.or.kr/vol/gov/mogaha/ntis/web/vol/vcm/action/VolVcmBbsPortalAction.do?pageIndex=${i}&amp;method=selectListVolVcmBbs&amp;gubun=Gen_Success&amp;ctlg_code=0002</url>
+		</page>
+	</pagelist>
+
+	<process rootPath="//table[@width='720' and @border='0' and @cellpadding='0' and @cellspacing='0']/tbody/tr/td[@valign='top']/table">
+		<field id="siteId" value="${site.name}"/>
+		<field id="categoryId" value="${category.name}"/>
+		<field id="orgname" value="${site.description}"/>
+		<field id="shortname" value="${site.description}"/>
+		<block xpath="//td[@width='411' and not(@class)]/img/@alt" headerValidation="not" args="공지글"/>
+		<field id="time" xpath="//td[@width='97' and not(@class)]/text()" datetimeParseFormat="yyyy/MM/dd" datetimeFormat="yyyyMMddHHmmss"/>
+		<field id="author" xpath="//td[@width='72']/text()" />
+		<field id="link" xpath="//td[@width='411' and not(@align)]/a/@href" parseJavascript="true" value="http://www.vol.or.kr/vol/gov/mogaha/ntis/web/vol/vcm/action/VolVcmBbsPortalAction.do?bbs_seq=${0}&amp;method=updateVolVcmBbsInqCnt&amp;gubun=Gen_Select&amp;ctlg_code=0002&amp;pbmgul_no=0&amp;lev=1&amp;methodnm=updateVolVcmBbsInqCnt&amp;jndinm=VolVcmBbsEJB&amp;bbs_se=1&amp;blti_se=2&amp;menuCode=VOL_MENU5&amp;context=NITS" >
+			 <field id="idx" pk="true" parseUrl="true" number="true" value="${bbs_seq}"/>
+			 <block linkPage="true" linkMethod="post">
+				<block xpath="//body">
+					<field id="title" xpath="(//td[contains(text(),'제목')]/..//td)[2]" tagRemove2="true" />
+					<field id="content" xpath="//td[@style='width:610px;word-break:break-all;']" tagRemove2="true" tagWhiteList="img,table" resourcePathRewrite="true" multiLines="true" />
+					<field id="atchname" xpath="((//td[contains(text(),'첨부파일')]/..//td)[2]//a)[1]/text()" />
+					<field id="filename" dependOn="atchname" value="${sys.now}"/>
+					<field id="atchlink" dependOn="atchname" xpath="((//td[contains(text(),'첨부파일')]/..//td)[2]//a)[1]/@href" prefix="http://www.vol.or.kr" >
+						<block id="atchfile" file="true" fileName="${field.filename}" copyTo="${var.download.dir}" />
+						<field id="filesize" value="${field.atchfile.fileSize}"/>
+					</field>
+				</block>
+			</block>
+		</field>	
+	</process>
+
+</category>

@@ -1,0 +1,13 @@
+<category name="test" description="test" version="1.0">
+
+	<pagelist>
+		<page encoding="utf-8" method="get">
+			<url>http://192.168.0.200:8080/test/test.jsp</url>
+		</page>
+	</pagelist>
+	
+	<process rootPath="//html" >
+		<field id="id" pk="true" xpath="//body/text()"/>
+		<field id="title" xpath="//title/text()"/>
+	</process>
+</category>

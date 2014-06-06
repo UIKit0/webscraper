@@ -1,0 +1,400 @@
+<table style="WIDTH: 528pt; BORDER-COLLAPSE: collapse" width="703">
+<tbody>
+<tr style="HEIGHT: 42.75pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; WIDTH: 528pt; HEIGHT: 42.75pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8" width="703" colspan="5">
+<table>
+<tbody>
+<tr>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; WIDTH: 528pt; HEIGHT: 42.75pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8" width="703" colspan="5">
+<p>주 간 메 뉴 표 </p></td>
+</tr>
+</tbody>
+</table> </td>
+</tr>
+<tr style="HEIGHT: 23.25pt">
+<td style="BORDER-BOTTOM: windowtext 2pt double; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 23.25pt; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+구분 </td>
+<td style="BORDER-BOTTOM: windowtext 2pt double; BORDER-LEFT: windowtext; BACKGROUND-COLOR: #ccffcc; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+4월02일(월) </td>
+<td style="BORDER-BOTTOM: windowtext 2pt double; BORDER-LEFT: windowtext; BACKGROUND-COLOR: #ccffcc; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+4월03일(화) </td>
+<td style="BORDER-BOTTOM: windowtext 2pt double; BORDER-LEFT: windowtext; BACKGROUND-COLOR: #ccffcc; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+4월04일(수) </td>
+<td style="BORDER-BOTTOM: windowtext 2pt double; BORDER-LEFT: windowtext; BACKGROUND-COLOR: #ccffcc; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 1pt solid">
+4월05일(목) </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+봄나물비빔밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+쌀밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+혼합곡 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+정성이 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+미소장국 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+김치수제비국 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+등뼈해장국 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+가득한 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+휴 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+달래양념장 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+닭채소볶음 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+달걀말이 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+점심 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+삶은달걀 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+검정콩조림 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+숙주무침 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+요플레 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+취나물무침 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+무말랭이무침 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+배추김치 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+깍두기 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+배추김치 </td>
+</tr>
+<tr style="HEIGHT: 21.75pt">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21.75pt; BORDER-TOP: windowtext; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+관 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+우동 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+잔치국수 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 1pt solid">
+우동 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+흑미밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+쌀밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+혼합곡 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+건강을 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+소고기무국 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+아욱국 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+순두부맑은탕/양념장 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+생각하는 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+삼치조림 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+떡갈비떡조림 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+고추장제육볶음 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+<table>
+<tbody>
+<tr>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; WIDTH: 56pt; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8" width="75">
+저녁 </td>
+</tr>
+</tbody>
+</table> </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+어묵새송이볶음 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+멸치고추장볶음 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+명엽채조림 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+일 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+깻잎지 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+오이미역초무침 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+상추/쌈장 </td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+배추김치 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+배추김치 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+배추김치 </td>
+</tr>
+<tr style="HEIGHT: 21.75pt">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21.75pt; BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: yellow; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+우동 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+잔치국수 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 1pt solid">
+우동 </td>
+</tr>
+<tr style="HEIGHT: 23.25pt">
+<td style="BORDER-BOTTOM: windowtext 2pt double; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 23.25pt; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+구분 </td>
+<td style="BORDER-BOTTOM: windowtext 2pt double; BORDER-LEFT: windowtext; BACKGROUND-COLOR: #ccffcc; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+4월06일(금) </td>
+<td style="BORDER-BOTTOM: windowtext 2pt double; BORDER-LEFT: windowtext; BACKGROUND-COLOR: #ccffcc; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+4월07일(토) </td>
+<td style="BORDER-BOTTOM: windowtext 2pt double; BORDER-LEFT: windowtext; BACKGROUND-COLOR: #ccffcc; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 1pt solid">
+4월08일(일) </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: windowtext; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+쌀밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+쌀밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+쌀밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+정성이 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+들깨미역국 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+배추국 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+김치찌개 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+가득한 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+자반고등어구이 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+소불고기 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+팝콘치킨 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+점심 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+모둠장조림 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+도토리묵/양념장 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+어묵볶음 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+<table>
+<tbody>
+<tr>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: #ccffcc; WIDTH: 56pt; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8" width="75"> </td>
+</tr>
+</tbody>
+</table> </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+브로콜리/초장 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+마늘종무침 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+조미김 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+배추김치 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+배추김치 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+깍두기 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21.75pt">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21.75pt; BORDER-TOP: windowtext; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+잔치국수 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+돈까스 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 1pt solid">
+돈까스 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+쌀밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+쌀밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+쌀밥 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+건강을 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+쑥된장국 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+알탕 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+콩나물국 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+생각하는 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+해물콩나물찜 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+마파두부 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+임연수구이 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+저녁 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+팽이버섯전 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+돌나물/초장 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+알감자조림 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+감자햄볶음 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+미역줄기볶음 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+부추무침 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+배추김치 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 0.5pt solid">
+배추김치 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+배추김치 </td>
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 21.75pt">
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 21.75pt; BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: #ece9d8">
+</td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext 0.5pt solid; BACKGROUND-COLOR: white; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+잔치국수 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 0.5pt solid">
+우동 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: white; BORDER-TOP: windowtext; BORDER-RIGHT: windowtext 1pt solid">
+잔치국수 </td>
+<td style="BORDER-BOTTOM: windowtext 1pt solid; BORDER-LEFT: windowtext; BACKGROUND-COLOR: transparent; BORDER-TOP: #ece9d8; BORDER-RIGHT: windowtext 1pt solid">
+</td>
+</tr>
+<tr style="HEIGHT: 19.5pt">
+<td style="BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: windowtext 1pt solid; BACKGROUND-COLOR: #ccffcc; HEIGHT: 39pt; BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: black 1pt solid" rowspan="2" colspan="5">
+언제나 맛깔스럽고 정성이 담긴 음식을 제공하도록 노력하겠습니다. </td>
+</tr>
+<tr style="HEIGHT: 22.5pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: white; HEIGHT: 22.5pt; BORDER-TOP: windowtext 1pt solid; BORDER-RIGHT: #ece9d8" colspan="5">
+*식단은 시장 구매 사정상 변경 될 수 있습니다. </td>
+</tr>
+<tr style="HEIGHT: 22.5pt">
+<td style="BORDER-BOTTOM: #ece9d8; BORDER-LEFT: #ece9d8; BACKGROUND-COLOR: transparent; HEIGHT: 22.5pt; BORDER-TOP: #ece9d8; BORDER-RIGHT: #ece9d8" colspan="5">
+* 원산지표시 쌀 :국내산 김치:국내산 돼지고기.닭고기:국내산 소고기:호주산 </td>
+</tr>
+</tbody>
+</table>
