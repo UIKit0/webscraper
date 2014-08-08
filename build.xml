@@ -71,10 +71,10 @@
 		
 		<jar destfile="${lib.dir}/webscraper.jar" basedir="${bin.dir}" excludes="" />
 		<jar destfile="${service.dir}/yajsw_conf.jar" basedir="${bin.dir}" includes="com/websqrd/catbot/yajsw/**" />
-				
+
 		<delete dir="${bin.dir}" />
 		
-        <subant failonerror="false">
+        <!--<subant failonerror="false">
             <propertyset><propertyref prefix="toplevel"/></propertyset>
             <fileset dir="../${websqrdlibs.project.name}/" includes="build.xml"/>
         </subant>
@@ -82,7 +82,7 @@
 		<copy includeemptydirs="false" todir="${lib.dir}">
             <fileset dir="${dev.lib.dir}" excludes=""/>
 			<fileset dir="../${websqrdlibs.project.name}/release/${websqrdlibs.project.name}/lib/" includes="**/*.jar" excludes="**/bsh*.jar"/>
-        </copy>
+        </copy>-->
 		
 		<copy todir="${conf.dir}">
 			<fileset dir="${dev.conf.dir}" /> 

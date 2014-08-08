@@ -674,7 +674,7 @@ public class CategoryScrapingProcess {
 		} else {
 			// 기존의 pk값보다 큰 값이 들어오면 기록하고 작거나 같으면 수집을 종료한다.
 			// 정수일 경우에는 long으로 변환하여 비교하고 문자타입일 경우에는 스트링 비교를 수행한다.
-			logger.trace("myPkValue={} : lastPkValue={}", myPkValue, lastPkValue);
+			logger.trace("myPkValue={} : lastPkValue={}, maxPkValue={}", new Object[]{myPkValue, lastPkValue, maxPK});
 			if (isPkLargerThan(myPkValue, lastPkValue)) {
 				// 이전 pk보다 크므로 새로운 게시물이다!!.
 				// 이번에 수집된 게시물들중에 중복된 것이 있는지 확인.

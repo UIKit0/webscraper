@@ -29,9 +29,9 @@
 	<classpathentry kind="lib" path="lib/jdbc/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="lib/jdbc/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="lib/jsoup-1.6.2.jar"/>
-	<classpathentry kind="lib" path="lib/websqrd_libs.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/toolcat.jar" sourcepath="/toolcat"/>
+	<classpathentry kind="lib" path="lib/websqrd_libs_140807.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="lib" path="development/conf"/>
 	<classpathentry kind="lib" path="lib/httpclient/commons-codec-1.6.jar"/>

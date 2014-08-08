@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +56,7 @@ public class FileGoneList {
 		dir.mkdirs();
 
 		File fpGoneFile = new File(dir, goneFile);
-		goneList = new HashMap<String, String>();
+		goneList = new ConcurrentHashMap<String, String>();
 		if (fpGoneFile.exists()) {
 			BufferedReader br = null;
 			try {
@@ -83,11 +84,11 @@ public class FileGoneList {
 		}
 	}
 
-	public  synchronized boolean isExists(String url, String encoding) {
+	public boolean isExists(String url, String encoding) {
 		url = url.trim().toLowerCase();
 		url = urlDecode.getDecodedUrl(url, encoding);			
 		String key = MD5.getMD5String(url);
-		String value = goneList.get(key); 
+		String value = goneList.get(key);
 		logger.trace("fileList count {}", goneList.size());
 		if ( value == null || value.trim().length() == 0 )
 			return false;
@@ -95,7 +96,7 @@ public class FileGoneList {
 			return true;
 	}
 
-	public synchronized void appendUrl(String url, String encoding) {
+	public void appendUrl(String url, String encoding) {
 		//GoneList에 디코딩된 URL 추가.
 		url = url.trim().toLowerCase();
 		url = urlDecode.getDecodedUrl(url, encoding);				
