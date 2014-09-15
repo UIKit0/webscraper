@@ -27,7 +27,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.el.ValueSuffix;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.http.Header;
@@ -169,23 +168,23 @@ public class CategoryScrapingProcess {
 		globalConfig = CatbotSettings.getGlobalConfig();
 		this.siteConfig = siteConfig;
 		this.categoryConfig = categoryConfig;
-		isFixed = false;
+		isFixed = true;
 
 		// 사이트에서 인터벌을 정의 했다면 사이트에서 정의된 인터벌을 사용한다.
 		if (siteConfig.getPropertyInt("interval.delay.time.max") != -1) {
 			this.scrapingIntervalDelayMaxTime = siteConfig.getPropertyInt("interval.delay.time.max") * 1000;
 			String intervalType = siteConfig.getPropertyString("interval.delay.time.type");
-			if ("static".equalsIgnoreCase(intervalType))
-				isFixed = true;
+			if ("dynamic".equalsIgnoreCase(intervalType))
+				isFixed = false;
 			// interval 딜레이 타입이 static이 아닐 경우는 랜덤으로 간주한다.
 		} else {
 			this.scrapingIntervalDelayMaxTime = globalConfig.getInt("interval.delay.time.max") * 1000;
 			String intervalType = globalConfig.getProperty("interval.delay.time.type");
-			if ("static".equalsIgnoreCase(intervalType))
-				isFixed = true;
+			if ("dynamic".equalsIgnoreCase(intervalType))
+				isFixed = false;
 			// interval 딜레이 타입이 static이 아닐 경우는 랜덤으로 간주한다.
 		}
-
+			
 		this.httpContext = httpContext;
 		siteCharset = siteConfig.getCharset();
 		process = categoryConfig.getProcess();
@@ -202,8 +201,8 @@ public class CategoryScrapingProcess {
 		if (test) {
 			scrapingDAO = new MemoryScrapingData();
 			scrapingDAO.open();
-			scrapingIntervalDelayMaxTime = 500;
-			isFixed = true;
+			//scrapingIntervalDelayMaxTime = 500;
+			//isFixed = true;
 		} else if (globalConfig.isDebug()) {
 			scrapingDAO = new DebugScrapingData(siteConfig.getSiteName(), categoryConfig.getCategoryName());
 			logger.debug("globalConfig.isDebug() = {}, {}", globalConfig.isDebug(), scrapingDAO);
@@ -647,6 +646,7 @@ public class CategoryScrapingProcess {
 
 	private void delay() throws InterruptedException {
 		int delayTime = scrapingIntervalDelayMaxTime;
+		
 		if (!isFixed) {
 			delayTime = random.nextInt(scrapingIntervalDelayMaxTime);
 		}
@@ -1767,9 +1767,7 @@ public class CategoryScrapingProcess {
 			request = post;
 			url = postUrl;
 		} else {
-logger.debug("url:{} / encoding:{}", url, encoding);
 			url = URLEncoder.getEncodedUrl(url, encoding);
-logger.debug("url:{}", url);
 			request = new HttpGet(url);
 		}
 
