@@ -265,8 +265,9 @@ public class ScrapingDB implements ScrapingDAO {
 									}
 									ps.setString(j + 1, value);
 									inputData.put(fieldName + ":"+j+1+"", value);
-								}								
-								ps.executeUpdate();								
+								}
+								logger.debug("statement:{}", ps);
+								ps.executeUpdate();
 							}// SEQUENCE_LOOP
 						}finally{
 							repositoryHandler.closePreparedStatement(ps);

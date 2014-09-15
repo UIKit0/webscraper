@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.jdom.Element;
 
-import com.websqrd.catbot.util.urlDecode;
+import com.websqrd.catbot.util.URLDecoder;
 
 
 
@@ -22,7 +22,7 @@ public class SiteLoginConfig {
 	public SiteLoginConfig(Element root, String charSet){
 		method = root.getAttributeValue("method", "get");
 		Element urlEl = (Element)root.getChild("url");
-		this. url = urlDecode.getDecodedUrl(urlEl.getValue(), charSet);
+		this. url = URLDecoder.getDecodedUrl(urlEl.getValue(), charSet);
 		List<Element> paramList = (List<Element>)root.getChildren("url-params");	
 		
 		if(paramList != null){

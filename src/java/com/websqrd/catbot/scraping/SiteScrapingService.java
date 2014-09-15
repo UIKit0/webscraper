@@ -40,7 +40,7 @@ import com.websqrd.catbot.setting.CatbotSettings;
 import com.websqrd.catbot.setting.CategoryConfig;
 import com.websqrd.catbot.setting.SiteConfig;
 import com.websqrd.catbot.setting.SiteLoginConfig;
-import com.websqrd.catbot.util.urlDecode;
+import com.websqrd.catbot.util.URLDecoder;
 import com.websqrd.catbot.web.HttpClientWrapper;
 import com.websqrd.catbot.web.PooledHttpClientManager;
 
@@ -124,7 +124,7 @@ public class SiteScrapingService {
 	private void doLoginWithCookie(SiteLoginConfig loginConfig) throws Exception {
 		String charset = siteConfig.getCharset();
 		String loginUrl = loginConfig.getUrl();
-		loginUrl = urlDecode.getDecodedUrl(loginUrl, charset);
+		loginUrl = URLDecoder.getDecodedUrl(loginUrl, charset);
 		logger.debug("loginUrl = {}", loginUrl);
 		// 파라미터를 준비한다.
 		List<NameValuePair> formParams = new ArrayList<NameValuePair>();

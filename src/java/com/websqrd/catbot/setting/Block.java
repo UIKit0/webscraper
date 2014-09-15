@@ -78,6 +78,7 @@ public class Block {
 	protected String replaceTo; //바꿀 문장.
 	private boolean setDataWithPrevValueWhenNull; //값이 널일때 바로 이전에 수집한 데이터를 넣어준다. 
 	protected boolean cvtGMT2Local;
+	protected boolean checkDuplicateTitle;
 	
 	public Block(Element blockEl) {
 		fill(blockEl);
@@ -410,5 +411,8 @@ public class Block {
 	{
 		return cvtGMT2Local;
 	}
-	
+
+	public boolean checkDuplicateTitle() {
+		return checkDuplicateTitle;
+	}
 }

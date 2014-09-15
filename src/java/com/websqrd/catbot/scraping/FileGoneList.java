@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.websqrd.catbot.setting.CatbotSettings;
-import com.websqrd.catbot.util.urlDecode;
+import com.websqrd.catbot.util.URLDecoder;
 import com.websqrd.libs.crypt.MD5;
 
 public class FileGoneList {
@@ -86,7 +86,7 @@ public class FileGoneList {
 
 	public boolean isExists(String url, String encoding) {
 		url = url.trim().toLowerCase();
-		url = urlDecode.getDecodedUrl(url, encoding);			
+		url = URLDecoder.getDecodedUrl(url, encoding);			
 		String key = MD5.getMD5String(url);
 		String value = goneList.get(key);
 		logger.trace("fileList count {}", goneList.size());
@@ -99,7 +99,7 @@ public class FileGoneList {
 	public void appendUrl(String url, String encoding) {
 		//GoneList에 디코딩된 URL 추가.
 		url = url.trim().toLowerCase();
-		url = urlDecode.getDecodedUrl(url, encoding);				
+		url = URLDecoder.getDecodedUrl(url, encoding);				
 		String key = MD5.getMD5String(url);
 		goneList.put(key, url);
 		logger.debug("goneList에 URL 추가 {}, Count : {}", url,goneList.size());

@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.SocketTimeoutException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -50,13 +48,10 @@ import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.conn.ConnectionPoolTimeoutException;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.BufferedHttpEntity;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EncodingUtils;
@@ -87,8 +82,8 @@ import com.websqrd.catbot.setting.Page;
 import com.websqrd.catbot.setting.Process;
 import com.websqrd.catbot.setting.SiteConfig;
 import com.websqrd.catbot.util.TextExtract;
-import com.websqrd.catbot.util.urlDecode;
-import com.websqrd.catbot.util.urlEncode;
+import com.websqrd.catbot.util.URLDecoder;
+import com.websqrd.catbot.util.URLEncoder;
 import com.websqrd.catbot.web.PooledHttpClientManager;
 
 import com.websqrd.libs.common.Formatter;
@@ -332,7 +327,8 @@ public class CategoryScrapingProcess {
 				}
 
 				// inx != to는 from, to 가 역순일 경우 처리하기 위함.
-				for (long inx = from; inx != to; inx += step) {
+				// 주의 차후 수정 시 continue 등을 체크하여 무한루프를 방지하도록 한다. 
+				for (long inx = from; ; inx += step) {
 					//
 					// URL 초기화
 					//
@@ -364,7 +360,10 @@ public class CategoryScrapingProcess {
 					if (!doProcessUrl(url, pageHttpMethod, formParams)) {
 						break MAIN_LOOP;
 					}
-
+					
+					if(inx == to) {
+						break;
+					}
 				}// page for loop
 
 			}// MAIN_LOOP
@@ -713,6 +712,7 @@ public class CategoryScrapingProcess {
 			String removeAll = block.getRemoveAll();
 			String validation = block.getValidation();
 			String headerValidation = block.getHeaderValidation();
+			boolean checkDuplicateTitle = block.checkDuplicateTitle();
 			boolean isFinished = false; // 처리할 필요없이 끝내는지 여부.
 
 			// 부모필드가 다중값이면 현재필드도 여러개이므로 이름에 번호를 붙여준다.
@@ -1054,7 +1054,8 @@ public class CategoryScrapingProcess {
 					if (id != null && id.equals("title")) {
 						// logger.warn("중복된 타이틀 체크! >> {}",
 						// value);
-						if (isDupTitle(value)) {
+						
+						if (checkDuplicateTitle && isDupTitle(value)) {
 							// 중복된 타이틀이 수집되었다면 다음으로
 							// 넘어간다.
 							logger.warn("중복된 타이틀이라서 무시합니다. >> {}", value);
@@ -1509,8 +1510,8 @@ public class CategoryScrapingProcess {
 				for (String param : query.split("&")) {
 					int pos = param.indexOf("=");
 					if (pos > 0) {
-						String key = URLDecoder.decode(param.substring(0, pos), encoding);
-						String value = URLDecoder.decode(param.substring(pos + 1), encoding);
+						String key = java.net.URLDecoder.decode(param.substring(0, pos), encoding);
+						String value = java.net.URLDecoder.decode(param.substring(pos + 1), encoding);
 						params.put(key, value);
 						// logger.info("key = >> {}",key);
 						// logger.info("value = >> {}",value);
@@ -1735,13 +1736,13 @@ public class CategoryScrapingProcess {
 
 		}
 
-		url = urlDecode.getDecodedUrl(url, encoding);
+		url = URLDecoder.getDecodedUrl(url, encoding);
 		// 입력된 URL에 대해서 무조건 Decoding 한후 필요에 따라서 Encoding 한다.
 
 		if (getMethod.equalsIgnoreCase(Block.LINK_METHOD_POST)) {
 			String postUrl = url.substring(0, url.indexOf("?"));
 			// url이 post일때 ? 뒤의 파라메타를 뺸다.
-			HttpPost post = new HttpPost(urlEncode.getEncodedUrl(postUrl, encoding));
+			HttpPost post = new HttpPost(URLEncoder.getEncodedUrl(postUrl, encoding));
 			// ////////////////////////////////////////////////////////////////
 			if (url != null && !"".equals(url)) {
 				int pos = url.indexOf("?");
@@ -1766,7 +1767,9 @@ public class CategoryScrapingProcess {
 			request = post;
 			url = postUrl;
 		} else {
-			url = urlEncode.getEncodedUrl(url, encoding);
+logger.debug("url:{} / encoding:{}", url, encoding);
+			url = URLEncoder.getEncodedUrl(url, encoding);
+logger.debug("url:{}", url);
 			request = new HttpGet(url);
 		}
 

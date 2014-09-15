@@ -1,9 +1,8 @@
 package com.websqrd.catbot.util;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
-public class urlDecode {
+public class URLDecoder {
 	public static  synchronized String getDecodedUrl(String urlString, String encoding) {
 		int p = urlString.indexOf("?");
 		if (p < 0) {
@@ -28,7 +27,7 @@ public class urlDecode {
 
 				if (value.length() > 0) {
 					try {
-						value = URLDecoder.decode(value, encoding);
+						value = java.net.URLDecoder.decode(value, encoding);
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
 					}

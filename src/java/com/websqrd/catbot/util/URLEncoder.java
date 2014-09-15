@@ -1,16 +1,15 @@
 package com.websqrd.catbot.util;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
-public class urlEncode {
-	public static synchronized  String getEncodedUrl(String urlString, String encoding) {
+public class URLEncoder {
+	public static String getEncodedUrl(String urlString, String encoding) {
 		int p = urlString.indexOf("?");
 		if (p < 0) {
-			return urlString;
+			return getEncodedPath(urlString, encoding);
 		} else {
 			StringBuffer urlBuffer = new StringBuffer();
-			String frontUrl = urlString.substring(0, p);
+			String frontUrl = getEncodedPath(urlString.substring(0, p), encoding);
 			urlBuffer.append(frontUrl);
 			String paramString = urlString.substring(p + 1);
 			String[] params = paramString.split("&");
@@ -28,10 +27,8 @@ public class urlEncode {
 
 				if (value.length() > 0) {
 					try {
-						value = URLEncoder.encode(value, encoding);
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
+						value = java.net.URLEncoder.encode(value, encoding);
+					} catch (UnsupportedEncodingException ignore) { }
 					if (i == 0) {
 						urlBuffer.append("?");
 					} else {
@@ -46,5 +43,24 @@ public class urlEncode {
 			return urlBuffer.toString();
 
 		}
+	}
+	
+	
+	public static String getEncodedPath(String path, String encoding) {
+		String[] dirs = path.split("/");
+		StringBuilder sb = new StringBuilder();
+		for (int inx = 0; inx < dirs.length; inx++) {
+			if(inx == 0) {
+				sb.append(dirs[0]);
+				continue;
+			}
+			try {
+				sb.append("/").append(java.net.URLEncoder.encode(dirs[inx], encoding));
+			} catch (UnsupportedEncodingException ignore) { }
+		}
+		if(sb.length() > 0) {
+			path = sb.toString();
+		}
+		return path;
 	}
 }
