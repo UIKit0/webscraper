@@ -84,7 +84,6 @@ import com.websqrd.catbot.util.TextExtract;
 import com.websqrd.catbot.util.URLDecoder;
 import com.websqrd.catbot.util.URLEncoder;
 import com.websqrd.catbot.web.PooledHttpClientManager;
-
 import com.websqrd.libs.common.Formatter;
 import com.websqrd.libs.xml.XmlUtils;
 
@@ -183,6 +182,11 @@ public class CategoryScrapingProcess {
 			if ("dynamic".equalsIgnoreCase(intervalType))
 				isFixed = false;
 			// interval 딜레이 타입이 static이 아닐 경우는 랜덤으로 간주한다.
+		}
+		
+		//기본값
+		if(scrapingIntervalDelayMaxTime < 0) {
+			scrapingIntervalDelayMaxTime = 500;
 		}
 			
 		this.httpContext = httpContext;
@@ -1022,8 +1026,14 @@ public class CategoryScrapingProcess {
 						// userValue =
 						// userValue.replaceAll("\\$\\{.*?\\}",
 						// "");
-
 						value = userValue;
+						if((value==null || "".equals(value)) && block.isNumeric()) {
+							value = "0";
+						} 
+					}
+					
+					if (value != null && block.getMaxLength() != -1 && value.length() > block.getMaxLength()) {
+						value = value.substring(0, block.getMaxLength());
 					}
 
 					// prefix, suffix 적용
@@ -1729,48 +1739,64 @@ public class CategoryScrapingProcess {
 	}
 
 	public synchronized HttpResponse getHttpResponse(String url, String getMethod) {
-
-		try {
-			delay();
-		} catch (Exception e) {
-
-		}
+		
+		try { delay(); } catch (Exception ignore) { }
 
 		url = URLDecoder.getDecodedUrl(url, encoding);
 		// 입력된 URL에 대해서 무조건 Decoding 한후 필요에 따라서 Encoding 한다.
-
+		
 		if (getMethod.equalsIgnoreCase(Block.LINK_METHOD_POST)) {
-			String postUrl = url.substring(0, url.indexOf("?"));
-			// url이 post일때 ? 뒤의 파라메타를 뺸다.
-			HttpPost post = new HttpPost(URLEncoder.getEncodedUrl(postUrl, encoding));
 			// ////////////////////////////////////////////////////////////////
 			if (url != null && !"".equals(url)) {
 				int pos = url.indexOf("?");
-				if (pos > 0) {
+				String postUrl = url;
+				StringBuilder query = new StringBuilder();
+				// url이 post일때 ? 뒤의 파라메타를 뺸다.
+				if(pos != -1) {
+					postUrl = url.substring(0, url.indexOf("?"));
+				}
+				String encodedUrl = URLEncoder.getEncodedUrl(postUrl, encoding);
+				HttpPost post = new HttpPost(encodedUrl);
+				if (pos != -1) {
 					List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 					String data = url.substring(url.indexOf("?") + 1);
 					String[] tmps = data.split("&");
 					for (int i = 0; i < tmps.length; i++) {
 						String[] kv = tmps[i].split("=");
 						if (kv.length >= 2) {
-							logger.trace("post request params: key = {}, val = {}", kv[0], kv[1]);
-							nvps.add(new BasicNameValuePair(kv[0], kv[1]));
+							//FIXME:일단급하게...
+							if("Act".equals(kv[0])) {
+								logger.trace("query params: key = {}, val = {}", kv[0], kv[1]);
+								query.append("&")
+									.append(URLEncoder.getEncodedUrl(kv[0], encoding)) .append("=")
+									.append(URLEncoder.getEncodedUrl(kv[1], encoding));
+							} else {
+								logger.trace("post request params: key = {}, val = {}", kv[0], kv[1]);
+								nvps.add(new BasicNameValuePair(kv[0], kv[1]));
+							}
 						}
 					}
+		
 					try {
+						if(query.length() > 0) {
+							encodedUrl += "?"+query.substring(1);
+							post = new HttpPost(encodedUrl); 
+						}	
 						post.setEntity(new UrlEncodedFormEntity(nvps, encoding));
 					} catch (UnsupportedEncodingException e) {
 						logger.error(e.getMessage(), e);
 					}
+					logger.debug("post:{}", post);
+					logger.debug("nvp:{}", nvps);
 				}
+				request = post;
+				url = postUrl;
 			}
-			request = post;
-			url = postUrl;
 		} else {
 			url = URLEncoder.getEncodedUrl(url, encoding);
 			request = new HttpGet(url);
 		}
-
+		
 		logger.trace("----------------------------------------------------");
 		Map<String, String> head = siteConfig.getHeadParam();
 		Iterator<String> headItr = head.keySet().iterator();
@@ -1778,8 +1804,7 @@ public class CategoryScrapingProcess {
 			String key = (String) headItr.next();
 			String value = head.get(key);
 			request.setHeader(key, value);
-			logger.trace("key : {} ", key);
-			logger.trace("value : {} ", value);
+			logger.debug("key : {} / value : {}", key, value);
 		}
 
 		logger.trace("trying to connect method = {}, url = {}", getMethod, url);

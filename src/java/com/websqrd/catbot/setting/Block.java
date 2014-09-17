@@ -79,6 +79,7 @@ public class Block {
 	private boolean setDataWithPrevValueWhenNull; //값이 널일때 바로 이전에 수집한 데이터를 넣어준다. 
 	protected boolean cvtGMT2Local;
 	protected boolean checkDuplicateTitle;
+	protected int maxLength;
 	
 	public Block(Element blockEl) {
 		fill(blockEl);
@@ -257,6 +258,15 @@ public class Block {
 				children.add(new Block(childEl));
 			}
 		}
+		
+		this.checkDuplicateTitle = "true".equals(node.getAttributeValue("checkDuplicateTitle"));
+		this.maxLength = -1;
+		try {
+			String thisValue = node.getAttributeValue("maxLength");
+			if(thisValue != null && !"".equals(thisValue)) {
+				maxLength = Integer.parseInt(thisValue);
+			}
+		} catch (NumberFormatException ignore) { }
 	}
 	
 	public boolean isPk(){
@@ -376,8 +386,7 @@ public class Block {
 		return fileCopyToPath;
 	}
 	
-	public String getfileNameEncoding()
-	{
+	public String getfileNameEncoding() {
 		return fileNameEncoding;
 	}
 
@@ -393,13 +402,11 @@ public class Block {
 		return multiNode;
 	}
 
-	public boolean isSetCurrentTimeWhenNULL()
-	{
+	public boolean isSetCurrentTimeWhenNULL() {
 		return setCurrentTimeWhenNULL;
 	}
 	
-	public boolean isJsessionRemove()
-	{
+	public boolean isJsessionRemove() {
 		return jsessionRemove;
 	}
 
@@ -407,12 +414,15 @@ public class Block {
 		return setDataWithPrevValueWhenNull;
 	}
 	
-	public boolean isConvertGMT2Local()
-	{
+	public boolean isConvertGMT2Local() {
 		return cvtGMT2Local;
 	}
 
 	public boolean checkDuplicateTitle() {
 		return checkDuplicateTitle;
+	}
+	
+	public int getMaxLength() {
+		return maxLength;
 	}
 }

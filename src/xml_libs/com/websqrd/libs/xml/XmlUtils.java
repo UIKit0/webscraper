@@ -87,6 +87,8 @@ public class XmlUtils {
 			resultText = outputter.outputString(((Element) obj));
 		}else if(obj instanceof Text){
 			resultText = ((Text) obj).getValue();
+		} else {
+			resultText = obj.toString();
 		}
 		
 		if (resultText == null) {

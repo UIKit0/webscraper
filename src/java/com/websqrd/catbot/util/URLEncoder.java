@@ -58,6 +58,9 @@ public class URLEncoder {
 				sb.append("/").append(java.net.URLEncoder.encode(dirs[inx], encoding));
 			} catch (UnsupportedEncodingException ignore) { }
 		}
+		if(path.endsWith("/")) {
+			sb.append("/");
+		}
 		if(sb.length() > 0) {
 			path = sb.toString();
 		}
