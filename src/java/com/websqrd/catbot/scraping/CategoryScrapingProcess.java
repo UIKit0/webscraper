@@ -138,9 +138,9 @@ public class CategoryScrapingProcess {
 	private String maxPK; // 고정공지글의 최신 pk값.
 	private boolean isFixedHeader; // 현재 수집글이 고정공지글인지 여부.
 	private Set<String> scrapingPkList; // 수집한 pk의 set을 유지한다. 수집게시물의 중복체크에
-	                                    // 사용된다.
-	                                    // 셋팅이 잘 되어있으면 중복은 없지만, 사용자의 실수를 대비해
-	                                    // double-check를 수행한다.
+										// 사용된다.
+										// 셋팅이 잘 되어있으면 중복은 없지만, 사용자의 실수를 대비해
+										// double-check를 수행한다.
 
 	private int scrapingIntervalDelayMaxTime;
 	private boolean isFixed;
@@ -336,8 +336,10 @@ public class CategoryScrapingProcess {
 					// URL 초기화
 					//
 					String url = page.getUrl();
-					if (url == null || "".equals(url.trim()))
+					if (url == null || "".equals(url.trim())) {
+logger.debug("BREAK1 : {}", url);
 						break;
+					}
 
 					if (url.contains("${i}")) {
 						url = url.replaceAll("\\$\\{i\\}", "" + inx);
@@ -361,10 +363,11 @@ public class CategoryScrapingProcess {
 					}
 
 					if (!doProcessUrl(url, pageHttpMethod, formParams)) {
+logger.debug("BREAK2 : {} / {} / {}", new Object[] { url, pageHttpMethod, formParams});
 						break MAIN_LOOP;
 					}
-					
 					if(inx == to) {
+logger.debug("BREAK3 : {} / {}", new Object[] { inx, to});
 						break;
 					}
 				}// page for loop
@@ -380,7 +383,7 @@ public class CategoryScrapingProcess {
 			}
 			logger.info("[{}] {} 수집이 끝났습니다. 문서수={}, maxPK={}, lastPkValue ={}", new Object[] { siteConfig.getSiteName(), categoryConfig.getCategoryName(), count, maxPK, lastPkValue });
 			scrapingLogger.info("[{}][{}] Scraping Finish.. elapsed = {}, 문서수={}, maxPK={}, lastPkValue ={}", new Object[] { siteConfig.getSiteName(), categoryConfig.getCategoryName(),
-			                Formatter.getFormatTime(System.currentTimeMillis() - st), count, maxPK, lastPkValue });
+							Formatter.getFormatTime(System.currentTimeMillis() - st), count, maxPK, lastPkValue });
 			return count;
 		} catch (Exception e) {
 			logger.error("수집시 에러발생!", e);
@@ -441,7 +444,7 @@ public class CategoryScrapingProcess {
 				// 결과에 문제가 있음.
 				logger.error("웹페이지에 문제가 있어 수집을 종료합니다. status={}", response.getStatusLine());
 				scrapingLogger.info("[{}][{}] Error Http Response: status={} url={}", new Object[] { siteConfig.getSiteName(), categoryConfig.getCategoryName(),
-				                response.getStatusLine().getStatusCode(), url });
+								response.getStatusLine().getStatusCode(), url });
 				// break MAIN_LOOP;
 				HttpEntity entity = response.getEntity();
 				EntityUtils.consume(entity);
@@ -623,7 +626,7 @@ public class CategoryScrapingProcess {
 			}
 			if (count % 20 == 0) {
 				scrapingLogger.info("[{}][{}] Scraping count = {}..",
-				                new Object[] { siteConfig.getSiteName(), categoryConfig.getCategoryName(), count, Formatter.getFormatTime(System.currentTimeMillis() - lap) });
+								new Object[] { siteConfig.getSiteName(), categoryConfig.getCategoryName(), count, Formatter.getFormatTime(System.currentTimeMillis() - lap) });
 				return PostProcessResult.SUCCESS;
 			}
 			lap = System.currentTimeMillis();
@@ -637,7 +640,7 @@ public class CategoryScrapingProcess {
 		}
 
 		if (lastPkValue == null || lastPkValue.trim().length() == 0) {
-			if (globalConfig.getInitialSize() <= count) {
+			if (globalConfig.getInitialSize() != -1 && globalConfig.getInitialSize() <= count) {
 				logger.error("{} <= {}", globalConfig.getInitialSize(), count);
 				// 갯수를 채우면 끝낸다.
 				// break MAIN_LOOP;
@@ -692,7 +695,6 @@ public class CategoryScrapingProcess {
 				return false;
 			}
 		}
-
 	}
 
 	private BuildFieldState makeFieldValue(HashMap<String, String> result, List<Block> blockList, String parentSource, String parentSequence) {
@@ -812,10 +814,10 @@ public class CategoryScrapingProcess {
 									value = XmlUtils.getSingleNodeText(xpath, new ByteArrayInputStream(value.getBytes()));
 								}
 								value = ""; // value는
-								            // 더이상
-								            // 사용하지
-								            // 않음을
-								            // 명시함.
+											// 더이상
+											// 사용하지
+											// 않음을
+											// 명시함.
 							} else {
 								// block 과
 								// field는 구분없이
@@ -1279,7 +1281,7 @@ public class CategoryScrapingProcess {
 					}
 
 					result.put(id, value.trim());
-					// logger.trace ("Put     {} >> \"{}\"",
+					// logger.trace ("Put	 {} >> \"{}\"",
 					// id, value.trim());
 					// logger.debug("block {} >> {}",
 					// id,value.trim());
@@ -1298,7 +1300,7 @@ public class CategoryScrapingProcess {
 					// 늘어나는 문제가 발생하므로, early termination을
 					// 적용한다.
 					//
-					if (block.isPk()) {
+					if (block.isPk() && block.isSequencial()) {
 						if (!checkContinueToScraping(value)) {
 							if (isFixedHeader) {
 								// 메인 리스트에 신규건이
@@ -1563,7 +1565,7 @@ public class CategoryScrapingProcess {
 				// 문제발생.
 				logger.error("링크페이지에서 에러가 발생하였습니다. status={}", response.getStatusLine());
 				scrapingLogger.info("[{}][{}] Error Http Response: Http Status={}, pkFieldId={}, url={}", new Object[] { siteConfig.getSiteName(), categoryConfig.getCategoryName(),
-				                response.getStatusLine().getStatusCode(), pkFieldId, strUrl });
+								response.getStatusLine().getStatusCode(), pkFieldId, strUrl });
 				try {
 					EntityUtils.consume(response.getEntity());
 					response.getEntity().getContent().close();
@@ -1864,7 +1866,7 @@ public class CategoryScrapingProcess {
 		 * */
 
 		if ((response.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_PERMANENTLY) || (response.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_TEMPORARILY)
-		                || (response.getStatusLine().getStatusCode() == HttpStatus.SC_SEE_OTHER) || (response.getStatusLine().getStatusCode() == HttpStatus.SC_TEMPORARY_REDIRECT)) {
+						|| (response.getStatusLine().getStatusCode() == HttpStatus.SC_SEE_OTHER) || (response.getStatusLine().getStatusCode() == HttpStatus.SC_TEMPORARY_REDIRECT)) {
 			Header header = response.getFirstHeader("location");
 			String reUrl = header.getValue();
 			request.abort();

@@ -80,6 +80,7 @@ public class Block {
 	protected boolean cvtGMT2Local;
 	protected boolean checkDuplicateTitle;
 	protected int maxLength;
+	private boolean isSequencial;
 	
 	public Block(Element blockEl) {
 		fill(blockEl);
@@ -267,6 +268,8 @@ public class Block {
 				maxLength = Integer.parseInt(thisValue);
 			}
 		} catch (NumberFormatException ignore) { }
+		
+		this.isSequencial = "true".equals(node.getAttributeValue("sequencial"));
 	}
 	
 	public boolean isPk(){
@@ -424,5 +427,9 @@ public class Block {
 	
 	public int getMaxLength() {
 		return maxLength;
+	}
+
+	public boolean isSequencial() {
+		return isSequencial;
 	}
 }
