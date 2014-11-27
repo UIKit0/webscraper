@@ -36,6 +36,7 @@ public class CategoryConfig {
 	public static final String SKIP_WHEN_DUPLICATION="SKIP_WHEN_DUPLICATION";
 	
 	private String categoryName;
+	private String categoryCode;
 	private String categoryDescription;
 	private String categoryScrapAction;
 	private String duplicationAction;
@@ -53,10 +54,10 @@ public class CategoryConfig {
 		}
 		
 		this.categoryName = root.getAttributeValue("name");		
+		this.categoryCode = root.getAttributeValue("code");
 		this.categoryDescription = root.getAttributeValue("description");
-		this.categoryScrapAction = root.getAttributeValue("ScrapAction");		
-		this.duplicationAction = root.getAttributeValue("duplicationAction");  
-				
+		this.categoryScrapAction = root.getAttributeValue("ScrapAction");
+		this.duplicationAction = root.getAttributeValue("duplicationAction");
 		
 		if (  SCRAPGETNEW.equalsIgnoreCase(this.categoryScrapAction) )
 			this.categoryScrapAction = SCRAPGETNEW;;
@@ -90,6 +91,10 @@ public class CategoryConfig {
 	
 	public String getCategoryName() {
 		return categoryName;
+	}
+	
+	public String getCategoryCode() {
+		return categoryCode;
 	}
 	
 	public String getDescription() {

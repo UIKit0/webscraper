@@ -32,6 +32,7 @@ public class SiteConfig {
 	private final static Logger logger = LoggerFactory.getLogger(SiteConfig.class);
 	
 	private String siteName;
+	private String siteCode;
 	private String siteDescription;
 	private String dataHandler;
 	private String agent;
@@ -57,6 +58,7 @@ public class SiteConfig {
 			return;
 		}
 		this.siteName = root.getAttributeValue("name");
+		this.siteCode = root.getAttributeValue("code");
 		this.siteDescription = root.getAttributeValue("description");
 		
 		List<Element> paramList = (List<Element>)root.getChildren("head-params");	
@@ -171,6 +173,10 @@ public class SiteConfig {
 	
 	public String getSiteName() {
 		return siteName;
+	}
+	
+	public String getSiteCode() {
+		return siteCode;
 	}
 	
 	public String getDescription() {

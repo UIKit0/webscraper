@@ -99,8 +99,9 @@
 		return;
 	}
 	Map<String,String> data = new HashMap<String,String>();
-	data.put("site", siteConfig.getSiteName());
-	data.put("category", categoryConfig.getCategoryName());
+	data.put("siteId", siteConfig.getSiteName());
+	data.put("categoryId", categoryConfig.getCategoryName());
+	data.put("categoryCode", categoryConfig.getCategoryCode());
 	
 	int totalCount = 0;
 	

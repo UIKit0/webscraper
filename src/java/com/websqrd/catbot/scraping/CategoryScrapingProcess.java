@@ -1440,12 +1440,16 @@ logger.debug("BREAK3 : {} / {}", new Object[] { inx, to});
 			} else if (category.equals("site")) {
 				if (property.equals("name")) {
 					value = siteConfig.getSiteName();
+				} else if (property.equals("code")) {
+					value = siteConfig.getSiteCode();
 				} else if (property.equals("description")) {
 					value = siteConfig.getDescription();
 				}
 			} else if (category.equals("category")) {
 				if (property.equals("name")) {
 					value = categoryConfig.getCategoryName();
+				} else if (property.equals("code")) {
+					value = categoryConfig.getCategoryCode();
 				} else if (property.equals("description")) {
 					value = categoryConfig.getDescription();
 				}
