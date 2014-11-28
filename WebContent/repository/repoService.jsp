@@ -164,7 +164,7 @@ switch(cmd){
 					JDBC_URL = JDBC_URL + "?" + parameter.replaceAll(",", "&");
 				JDBC_CLASS = "cubrid.jdbc.driver.CUBRIDDriver";
 			}else if(vendor.equals(RepositorySetting.VENDOR_ORACLE)){
-				JDBC_URL="jdbc:oracle:thin:@"+host+":"+port+":"+db;
+				JDBC_URL="jdbc:oracle:thin:@"+host+":"+port+"/"+db;
 				if ( parameter.isEmpty() == false )
 					JDBC_URL = JDBC_URL + "?" + parameter.replaceAll(",", "&");
 				JDBC_CLASS = "oracle.jdbc.driver.OracleDriver";
