@@ -57,8 +57,9 @@ void clearCategory(String siteId, String categoryId, JspWriter out) throws IOExc
 	//data 초기화	
 	if ( scrapingDAO != null ) {
 		HashMap<String, String> data = new HashMap<String, String>();
-		data.put("site", siteId);
-		data.put("category", categoryId);
+		data.put("siteId", siteId);
+		data.put("categoryId", categoryId);
+		data.put("categoryCode", categoryConfig.getCategoryCode());
 		
 		if (  CatbotSettings.getSiteCategoryConfigList(siteId).size() == 1 )
 			scrapingDAO.truncate(data);
