@@ -34,12 +34,17 @@ public class CategoryConfig {
 	public static final String SCRAPGETNEW="GETNEW";
 	public static final String BREAK_WHEN_DUPLICATION="BREAK_WHEN_DUPLICATION";
 	public static final String SKIP_WHEN_DUPLICATION="SKIP_WHEN_DUPLICATION";
+	public static final String OVERWRITE_WHEN_DUPLICATION="OVERWRITE_WHEN_DUPLICATION";
+	
+	public static final String BREAK_WHEN_PK_LESSER_THAN="BREAK_WHEN_PK_LESSER_THAN";
+	public static final String CONTINUE_WHEN_PK_LESSER_THAN="CONTINUE_WHEN_PK_LESSER_THAN";
 	
 	private String categoryName;
 	private String categoryCode;
 	private String categoryDescription;
 	private String categoryScrapAction;
 	private String duplicationAction;
+	private String pkCompareAction;
 	private List<Page> pageList = new ArrayList<Page>();
 	private Process process;
 	
@@ -58,23 +63,26 @@ public class CategoryConfig {
 		this.categoryDescription = root.getAttributeValue("description");
 		this.categoryScrapAction = root.getAttributeValue("ScrapAction");
 		this.duplicationAction = root.getAttributeValue("duplicationAction");
+		this.pkCompareAction = root.getAttributeValue("pkCompareAction");
 		
 		if (  SCRAPGETNEW.equalsIgnoreCase(this.categoryScrapAction) )
 			this.categoryScrapAction = SCRAPGETNEW;;
 			
-		if ( this.categoryScrapAction == null || ("").equals(this.categoryScrapAction)  ||  SCRAPGETALL.equalsIgnoreCase(this.categoryScrapAction) )
+		if (this.categoryScrapAction == null || ("").equals(this.categoryScrapAction)
+				|| SCRAPGETALL.equalsIgnoreCase(this.categoryScrapAction)) {
 			this.categoryScrapAction = SCRAPGETALL;
+		}
 		
-		if ( this.duplicationAction == null || this.duplicationAction == "")
-		{
+		if ( this.duplicationAction == null || this.duplicationAction == "") {
+			this.duplicationAction = BREAK_WHEN_DUPLICATION;
+		} else if ( !this.duplicationAction.equals(SKIP_WHEN_DUPLICATION) ) {
 			this.duplicationAction = BREAK_WHEN_DUPLICATION;
 		}
-		else
-		{		
-		if ( this.duplicationAction.equals(SKIP_WHEN_DUPLICATION) )		
-			this.duplicationAction = SKIP_WHEN_DUPLICATION;
-		else
-			this.duplicationAction = BREAK_WHEN_DUPLICATION;
+		
+		if ( this.pkCompareAction == null || this.pkCompareAction == "") {
+			this.pkCompareAction = BREAK_WHEN_PK_LESSER_THAN;
+		} else if ( !this.pkCompareAction.equals(CONTINUE_WHEN_PK_LESSER_THAN) ) {
+			this.pkCompareAction = BREAK_WHEN_PK_LESSER_THAN;
 		}
 				
 		Element processEl = root.getChild("process");
@@ -86,7 +94,6 @@ public class CategoryConfig {
 		for(Element pnode : pages) {
 			pageList.add(new Page(pnode));
 		}
-			
 	}
 	
 	public String getCategoryName() {
@@ -112,6 +119,9 @@ public class CategoryConfig {
 	}
 	public String getDuplicationAction(){
 		return duplicationAction;
+	}
+	public String getPKCompareAction() {
+		return pkCompareAction;
 	}
 	public void setScrapAction(String scrapAction){
 		this.categoryScrapAction = scrapAction; 

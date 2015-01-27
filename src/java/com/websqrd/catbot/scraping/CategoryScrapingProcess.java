@@ -680,19 +680,29 @@ logger.debug("BREAK3 : {} / {}", new Object[] { inx, to});
 		} else {
 			// 기존의 pk값보다 큰 값이 들어오면 기록하고 작거나 같으면 수집을 종료한다.
 			// 정수일 경우에는 long으로 변환하여 비교하고 문자타입일 경우에는 스트링 비교를 수행한다.
-			logger.trace("myPkValue={} : lastPkValue={}, maxPkValue={}", new Object[]{myPkValue, lastPkValue, maxPK});
-			if (isPkLargerThan(myPkValue, lastPkValue)) {
-				// 이전 pk보다 크므로 새로운 게시물이다!!.
-				// 이번에 수집된 게시물들중에 중복된 것이 있는지 확인.
-				if (scrapingPkList.contains(myPkValue)) {
-					logger.debug("중복된PK의 게시물이 발견되었습니다.pk={}", myPkValue);
-					return false;
+			
+			if(categoryConfig.getPKCompareAction() == categoryConfig.BREAK_WHEN_PK_LESSER_THAN) {
+				logger.trace("myPkValue={} : lastPkValue={}, maxPkValue={}", new Object[]{myPkValue, lastPkValue, maxPK});
+				if (isPkLargerThan(myPkValue, lastPkValue)) {
+					// 이전 pk보다 크므로 새로운 게시물이다!!.
+					// 이번에 수집된 게시물들중에 중복된 것이 있는지 확인.
+					if (scrapingPkList.contains(myPkValue)) {
+						logger.debug("중복된PK의 게시물이 발견되었습니다.pk={}", myPkValue);
+						return false;
+					} else {
+						// 최신 게시물이면서 중복이 아닌 게시물일경우.
+						return true;
+					}
 				} else {
-					// 최신 게시물이면서 중복이 아닌 게시물일경우.
-					return true;
+					return false;
 				}
 			} else {
-				return false;
+				if (categoryConfig.getDuplicationAction() == categoryConfig.BREAK_WHEN_DUPLICATION
+						&& scrapingPkList.contains(myPkValue)) {
+					logger.debug("중복된PK의 게시물이 발견되었습니다.pk={}", myPkValue);
+					return false;
+				}
+				return true;
 			}
 		}
 	}
@@ -934,45 +944,7 @@ logger.debug("BREAK3 : {} / {}", new Object[] { inx, to});
 						value = newPath.toString();
 					}
 
-					// 정규식으로 불필요한 내용 지워주기.
-					if (removeAll != null) {
-						// logger.debug("removeAll \"{}\", {}",
-						// value,removeAll);
-						value = value.replaceAll(removeAll, "");
-						// logger.debug("removeAll result = '{}'",value);
-					}
-
-					if (block.getReplaceAll() != null) {
-						logger.debug("replaceAll old = '{}'", value);
-						String fromPattern = block.getReplaceAll();
-						String toPattern = block.getReplaceTo();
-						if (toPattern == null) {
-							toPattern = "";
-						}
-
-						value = value.replaceAll(fromPattern, toPattern);
-						logger.debug("replaceAll result = '{}'", value);
-					}
-
-					//
-					// 정규식적용시 그룹 찾기.
-					//
-					if (regexp != null) {
-						// logger.debug("regexp = {}",regexp);
-						// logger.debug("value = {}",
-						// value);
-						Pattern p = Pattern.compile(regexp);
-						Matcher matcher = p.matcher(value);
-						// logger.debug("value1 = {}, matcher.groupCount() ={}",
-						// value, matcher.groupCount()
-						// );
-						if (matcher.find() && matcher.groupCount() > 0) {
-							value = matcher.group(1);
-						}
-						// logger.debug("value2 = {}",value);
-					}
-
-					// logger.debug("js url = {}", value);
+				// logger.debug("js url = {}", value);
 					String[] args = null;
 					// 일반적인 링크가 아닌 javascript와 같은 경우는 별도로
 					// 처리한다.
@@ -1032,6 +1004,44 @@ logger.debug("BREAK3 : {} / {}", new Object[] { inx, to});
 						if((value==null || "".equals(value)) && block.isNumeric()) {
 							value = "0";
 						} 
+					}
+					
+					// 정규식으로 불필요한 내용 지워주기.
+					if (removeAll != null) {
+						// logger.debug("removeAll \"{}\", {}",
+						// value,removeAll);
+						value = value.replaceAll(removeAll, "");
+						// logger.debug("removeAll result = '{}'",value);
+					}
+
+					if (block.getReplaceAll() != null) {
+						logger.debug("replaceAll old = '{}'", value);
+						String fromPattern = block.getReplaceAll();
+						String toPattern = block.getReplaceTo();
+						if (toPattern == null) {
+							toPattern = "";
+						}
+
+						value = value.replaceAll(fromPattern, toPattern);
+						logger.debug("replaceAll result = '{}'", value);
+					}
+
+					//
+					// 정규식적용시 그룹 찾기.
+					//
+					if (regexp != null) {
+						// logger.debug("regexp = {}",regexp);
+						// logger.debug("value = {}",
+						// value);
+						Pattern p = Pattern.compile(regexp);
+						Matcher matcher = p.matcher(value);
+						// logger.debug("value1 = {}, matcher.groupCount() ={}",
+						// value, matcher.groupCount()
+						// );
+						if (matcher.find() && matcher.groupCount() > 0) {
+							value = matcher.group(1);
+						}
+						// logger.debug("value2 = {}",value);
 					}
 					
 					if (value != null && block.getMaxLength() != -1 && value.length() > block.getMaxLength()) {

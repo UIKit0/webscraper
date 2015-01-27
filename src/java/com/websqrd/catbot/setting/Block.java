@@ -2,6 +2,7 @@ package com.websqrd.catbot.setting;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -58,6 +59,7 @@ public class Block {
 	protected boolean parseUrl; //parseUrl = true이면, 파라미터를 파싱해서 ${파라미터명}을 value에서 사용할수 있다.
 	protected String datetimeParseFormat; // 데이터를 읽어들일 날짜포맷. 
 	protected String datetimeFormat; //날짜데이터를 출력할 포맷. null이면 yyyy-MM-dd HH:mm:ss로 변환한다.
+	protected String format; //숫자출력포맷.
 	protected String prefix; // 결과내용에 붙여줄 prefix
 	protected String suffix; //결과내용에 붙여줄 suffix
 	protected String dateLocale;
@@ -68,6 +70,7 @@ public class Block {
 	private Set<String> tagWhiteList; //여기에 허용된 태그는 제거하지 않는다.
 	protected SimpleDateFormat datetimeFormatParser; //날짜파서
 	protected SimpleDateFormat datetimeFormatter; //날짜 포맷터
+	protected Formatter formatter;
 	protected boolean isFile; //필드가 파일url이라면 다운로드 받도록한다. 
 	protected String fileName; //다운로드 파일명
 	protected String fileCopyToPath; //다운로드 파일의 저장위치.
@@ -182,6 +185,15 @@ public class Block {
 			//파싱후 출력포맷을 결정한다.
 			this.datetimeFormat = dtFormat;
 			datetimeFormatter = new SimpleDateFormat(datetimeFormat);
+		}
+		
+		String format = node.getAttributeValue("format");
+		if(format!=null && !"".equals(format)) { 
+			//파싱후 출력포맷을 결정한다.
+			this.format = format;
+			try {
+				formatter = new Formatter(format);
+			} catch (Exception e) { }
 		}
 		
 		String prefix = node.getAttributeValue("prefix");
@@ -315,6 +327,9 @@ public class Block {
 	}
 	public String getLinkMethod() {
 		return linkMethod;
+	}
+	public String getNumberFormat() {
+		return format;
 	}
 	public String getDatetimeFormat() {
 		return datetimeFormat;
